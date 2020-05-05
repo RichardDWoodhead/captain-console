@@ -1,0 +1,40 @@
+<footer id="myFooter">
+    <div class="container">
+        <div class="row footer-row">
+            <div class="col-sm-3 logo-footer">
+                <h5>&nbsp</h5>
+                <a href="#" class="navbar-brand">
+                    <img id="footer-logo" src="{% static 'images/logo.png' %}">
+                </a>
+            </div>
+            <div class="col-sm-3">
+                <h5>Get started</h5>
+                    <a href="{% url 'front_page' %}">Home</a><br>
+                    <a href="{% url 'location' %}">Location</a><br>
+                    <a href="{% url 'contact_us' %}">Contact us</a>
+
+            </div>
+            <div class="col-sm-3">
+                <h5>About us</h5>
+                    <a href="{% url 'about_us' %}">About us</a><br>
+                    <a href="{% url 'key_info' %}">Key Info</a><br>
+                    <a href="{% url 'why_blue' %}">Why Blue?</a>
+
+            </div>
+            <div class="col-sm-3">
+                <h5>Account</h5>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'profile' %}" class="footerLinks">Profile</a><br>
+                    <a href="{% url 'log_out' %}" class="footerLinks">Logout</a>
+                {% else %}
+                    <a href="{% url 'log_in' %}" class="footerLinks">Log in</a>
+                {% endif %}
+            <div class="social-networks">
+                    <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
