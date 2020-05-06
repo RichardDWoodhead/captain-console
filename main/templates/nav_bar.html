@@ -1,20 +1,8 @@
  <!-- Main Navigation bar -->
     <nav id="main_nav" class="navbar sticky-top navbar-light">
-        <a href="{% url 'front_page' %}"><img src="{% static 'images/logo.png' %}", height=50px></a>
-        <a href="{% url 'front_page' %}"><h5 style="font-size: 1rem">Home</h5></a>
-        <a href="{% url 'about_us' %}"><h5 style="font-size: 1rem">About us</h5></a>
-        <a href="{% url 'location' %}"><h5 style="font-size: 1rem">Location</h5></a>
-        <a href="{% url 'contact_us' %}"><h5 style="font-size: 1rem">Contact us</h5></a>
-        <a href="{% url 'key_info' %}"><h5 style="font-size: 1rem">Key Info</h5></a>
-        <a href="{% url 'why_blue' %}"><h5 style="font-size: 1rem">Why Blue?</h5></a>
-        {% if user.is_authenticated %}
-            {% if UserData != "" and UserData != None%}
-                <a href="{% url 'profile' %}"><img src="{{UserData}}" class="rounded-circle" style="height: 50px; width: 65px"></a>
-                {% else %}
-                <a href="{% url 'profile' %}"><img src="{% static 'images/agent_logo.png' %}", class="rounded-circle" style="height: 50px; width: 65px"></a>
-                {% endif %}
-                <a href="{% url 'log_out' %}" style="font-size: 0.5rem;"><h5>Logout</h5></a>
-            {% else %}
-            <a href="{% url 'log_in' %}"><h5 style="font-size: 1rem">Log in</h5></a>
-        {% endif %}
-    </nav>
+        <a href=""></a>
+        <a href=""><h5 style="font-size: 1rem">Home</h5></a>
+        <a href="/store"><h5 style="font-size: 1rem">store</h5></a>
+
+
+    </nav><
