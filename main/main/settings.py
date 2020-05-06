@@ -77,8 +77,13 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hqmyznay',
+        'USER': 'hqmyznay',
+        'PASSWORD': 'bTk1yj8lCs05V_PreaEHVgU9mo7zI47J',
+        'HOST': 'balarama.db.elephantsql.com',
+        'PORT': '5432'
+
     }
 }
 
