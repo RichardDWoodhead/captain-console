@@ -1,0 +1,68 @@
+/* frontpage nav bar */
+#main_nav {
+    position: sticky;
+    height: 78px;
+    background-color: #FFFFFF;
+    text-align: center;
+    box-shadow: 0px 0px 5px 0px #888888;
+}
+
+/* Home */
+#home{
+    width: 54px;
+    height: 25px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+
+
+
+/* Rectangle 83 */
+#searchbar{
+    width: 263px;
+    height: 27px;
+
+    background: #FFF9F9;
+    box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+
+
+/* Store */
+#store{
+    width: 53px;
+    height: 25px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+
+    color: #FFFFFF;
+}
+
+
+
+
+/* Sign In */
+
+#signIn{
+    width: 91px;
+    height: 25px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 23px;
+    color: #FFFFFF;
+}
+
+
+
+
