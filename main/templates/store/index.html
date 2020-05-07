@@ -1,14 +1,19 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    {% for product in products  %}
-        <div class="card" style="margin-left:50px; width: 18rem;">
-          <img class="card-img-top" src=" {% static product.image  %}" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">price: {{ product.price }}</p>
-            <a href="#" class="btn btn-primary">more details</a>
-          </div>
+    <div class="container">
+        <div class="row">
+        {% for product in products  %}
+            <div class="card col-3" style="margin-left:50px; width: 18rem;">
+              <img class="card-img-top cardimg" src=" {% static product.image  %}" alt="Card image cap">
+              <div class="card-body border-top">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text">price: {{ product.price }}</p>
+                <a href="product/{{ product.id }}" class="btn btn-primary">more details</a>
+              </div>
+            </div>
+            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+        {% endfor %}
         </div>
-    {% endfor %}
+    </div>
 {% endblock %}
