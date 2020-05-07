@@ -4,35 +4,25 @@
     <div class="storeIndex">
         <div class="filter sticky">
             <div class="radio">
-                <label><input type="radio" name="optradio" checked>Option 1</label>
+                <label><input class="checkbox" type="checkbox" name="Game" >Game</label>
             </div>
             <div class="radio">
-                <label><input type="radio" name="optradio">Option 2</label>
+                <label><input class="checkbox" type="checkbox" name="Console">Console</label>
             </div>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Option 3</label>
+            <div class="slider">
+                <input id="slider" value="35000" class="border-0" type="range" min="15000" max="35000" />
+                <p id="slider_info">
+                    35000
+                </p>
             </div>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Option 4</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Option 5</label>
-            </div>
-            <div class="radio">
-                <label><input type="radio" name="optradio">Option 6</label>
-            </div>
-                <div class="slider">
-                    <input class="border-0" type="range" min="0" max="100" />
-                </div>
         </div>
-    <div class="container">
 
+    <div id="container" class="container">
 
         <div class="row">
 
-
         {% for product in products  %}
-            <div class="card col-3" style="margin-left:50px; width: 18rem;">
+            <div class="card col-3">
               <img class="card-img-top cardimg" src=" {% static product.image  %}" alt="Card image cap">
               <div class="card-body border-top">
                 <h5 class="card-title">{{ product.name }}</h5>
@@ -46,4 +36,5 @@
     </div>
     </div>
     </div>
+    <script type="text/javascript" src="{% static "javascript/filter.js" %}"></script>
 {% endblock %}
