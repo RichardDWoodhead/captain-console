@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django import forms
 
+from django.http import HttpResponse
 
 products = {
     1: {"id": 1, "name": "ps2", "price": 15000, "image": "images/ps2.png"},
