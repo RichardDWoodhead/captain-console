@@ -3,4 +3,8 @@
         <a href=""></a>
         <a href=""><h5 style="font-size: 1rem">Home</h5></a>
         <a href="/store"><h5 style="font-size: 1rem">store</h5></a>
+        <form action="/store/search">
+            {% csrf_token %}
+            <input type="text" id="search" name="query">
+        </form>
     </nav>
