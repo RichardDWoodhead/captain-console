@@ -1,3 +1,9 @@
 /venv/
 /main/.idea/
 /main/__pycache__/
+/main/user/__pycache__/
+/main/main/__pycache__/
+/main/home/__pycache__/
+/main/CaptainConsole/__pycache__/
+/main/CaptainConsole/migrations/__pycache__/
+/main/store/__pycache__/
