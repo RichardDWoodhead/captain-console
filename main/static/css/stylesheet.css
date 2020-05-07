@@ -83,6 +83,23 @@
     text-align: center;
 }
 
+
+.filter {
+
+    border: solid gray 1px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 200px;
+    height: fit-content;
+    padding: 20px 30px 20px 30px;
+
+}
+.storeIndex {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5%;
+}
+
 /* **********************************
             Footer
 ************************************/

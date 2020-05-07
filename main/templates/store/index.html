@@ -1,8 +1,36 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+    <div class="storeIndex">
+        <div class="filter sticky">
+            <div class="radio">
+                <label><input type="radio" name="optradio" checked>Option 1</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 2</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 3</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 4</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 5</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio">Option 6</label>
+            </div>
+                <div class="slider">
+                    <input class="border-0" type="range" min="0" max="100" />
+                </div>
+        </div>
     <div class="container">
+
+
         <div class="row">
+
+
         {% for product in products  %}
             <div class="card col-3" style="margin-left:50px; width: 18rem;">
               <img class="card-img-top cardimg" src=" {% static product.image  %}" alt="Card image cap">
@@ -15,5 +43,7 @@
             {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
         {% endfor %}
         </div>
+    </div>
+    </div>
     </div>
 {% endblock %}
