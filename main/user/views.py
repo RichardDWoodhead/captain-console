@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 
 def user(request):
-    return HttpResponse('userpage')
+    return render(request, "user/index.html")
