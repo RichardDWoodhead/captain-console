@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
+    <select id="sort_by">
+        <option value="name" id="name">Name</option>
+        <option value="Price" id="price">Price</option>
+    </select>
     <div class="storeIndex">
         <div class="filter sticky">
             <div class="radio">
@@ -17,13 +21,7 @@
             </div>
         </div>
 
-    <div id="container" class="container">
-
-        <div class="row">
-
-
-    </div>
-    </div>
+        <div id="container" class="container"><div class="row"></div></div>
     </div>
     <script type="text/javascript" src="{% static "javascript/filter.js" %}"></script>
 {% endblock %}
