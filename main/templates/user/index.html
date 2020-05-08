@@ -2,17 +2,29 @@
 {% load static %}
 {% block content %}
     <div class="container">
-    <div class="row profileContainer">
-        <img alt="You" class="profilePic rounded-circle col-md-4" src="../static/images/Profilepic.png">
+        <div class="row profileContainer">
+            <img alt="You" class="col-2" id="profilePic" src="../static/images/Profilepic.png">
 
 
-    <div class="profileText col-md-5">
-        <p2>Profile Info</p2>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet.</p>
-        <p>Lorem ipsum dolor sit amet.</p>
+
+
+
+            <div class="profileText col-4">
+                <H1>Profile Info</H1>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+                <p>Lorem ipsum dolor sit amet.</p>
+            </div>
+        </div>
+        <div class="row">
+            <form>
+                <div class="form-group">
+                    <input type="file" class="form-control-file" accept='image/*' onchange='loadImg(event)'>
+                    <input type="submit" onclick="inn">
+                </div>
+            </form>
+        </div>
     </div>
-    </div>
-    </div>
+    <script type="text/javascript" src="{% static "javascript/profile.js" %}"></script>
 {% endblock %}
