@@ -21,7 +21,7 @@ class ProductImage(models.Model):
         return self.image
 
 
-class Order(models.Models):
+class Order(models.Model):
     date = models.DateField()
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
