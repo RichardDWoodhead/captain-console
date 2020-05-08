@@ -1,21 +1,46 @@
 window.onload = function () {
     let products = [
         {"id": 1, "name": "ps2", "price": 15000, "image": "images/ps2.png", "type": "Console"},
-        {"id": 2, "name": "ps2", "price": 15000, "image": "images/ps2.png", "type": "Console"},
+        {"id": 2, "name": "ps2", "price": 20000, "image": "images/ps2.png", "type": "Console"},
         {"id": 3, "name": "ps2", "price": 15000, "image": "images/ps2.png", "type": "Game"},
         {"id": 4, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 5, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Game"},
+        {"id": 5, "name": "ps3", "price": 35000, "image": "images/ps3.jpg", "type": "Game"},
         {"id": 6, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
         {"id": 7, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
         {"id": 8, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Game"},
         {"id": 9, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Game"},
         {"id": 10, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 11, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Console"},
+        {"id": 11, "name": "ps4", "price": 15000, "image": "images/ps4.jpg", "type": "Console"},
         {"id": 12, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Game"},
-        {"id": 13, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Game"},
+        {"id": 13, "name": "ps4", "price": 20000, "image": "images/ps4.jpg", "type": "Game"},
         {"id": 14, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Game"},
     ]
+    function compare_products(product_a, product_b, ){
+        let order_by_value = document.getElementById("sort_by").value
+        let order = order_by_value === "name";
+        if (order === true){
+            if(product_a["name"] === product_b["name"]){
+                if (product_a["price"] < product_b["price"]){return -1}else{return 1}
+            }
+            else if (product_a["name"] < product_b["name"]){
+                return -1
+            } else{
+                return 1
+            }
+        } else{
+            if(product_a["price"] === product_b["price"]){
+                if (product_a["name"] < product_b["name"]){return -1}else{return 1}
+            }
+            else if (product_a["price"] < product_b["price"]){
+                return -1
+            } else{
+                return 1
+            }
+        }
+
+    }
     function display_products(){
+        products.sort(compare_products)
         let counter = 0
         let container = document.getElementById("container")
         container.innerHTML = ""
@@ -90,5 +115,8 @@ window.onload = function () {
     document.getElementsByClassName("storeIndex")[0].onclick = function(){
         display_products();
     }
-
+    let order_by_element = document.getElementById("sort_by")
+    order_by_element.onclick = function () {
+        display_products();
+    }
 }
