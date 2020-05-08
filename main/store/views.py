@@ -43,3 +43,15 @@ def search(request):
             if search_string in i["name"]:
                 filtered_list.append(i)
     return render(request, "store/index.html", context={"products": filtered_list})
+
+
+def payment(request):
+    return render(request, "store/checkout/pay.html")
+
+
+def review(request):
+    return render(request, "store/checkout/review.html")
+
+
+def confirmation(request):
+    return render(request, "store/checkout/confirmation.html")
