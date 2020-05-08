@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'store.apps.StoreConfig',
     'user.apps.UserConfig',
+    'contact_us.apps.ContactUsConfig'
 
 ]
 

@@ -2,7 +2,9 @@
     <nav id="main_nav" class="navbar sticky-top navbar-light">
         <a href="/home"><h5 style="font-size: 1rem">Home</h5></a>
         <a href="/store"><h5 style="font-size: 1rem">Store</h5></a>
-         <a href="/user"><h5 style="font-size: 1rem">Sign in</h5></a>
+        <a href="/contact_us"><h5 style="font-size: 1rem">Contact Us</h5></a>
+        <a href="/user"><h5 style="font-size: 1rem">Sign in</h5></a>
+
         <form id="search_form" action="/store">
             {% csrf_token %}
             <input type="text" id="search" name="query">
