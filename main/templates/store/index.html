@@ -21,18 +21,7 @@
 
         <div class="row">
 
-        {% for product in products  %}
-            <div class="card col-3">
-              <img class="card-img-top cardimg" src=" {% static product.image  %}" alt="Card image cap">
-              <div class="card-body border-top">
-                <h5 class="card-title">{{ product.name }}</h5>
-                <p class="card-text">price: {{ product.price }}</p>
-                <a href="product/{{ product.id }}" class="btn btn-primary">more details</a>
-              </div>
-            </div>
-            {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
-        {% endfor %}
-        </div>
+
     </div>
     </div>
     </div>
