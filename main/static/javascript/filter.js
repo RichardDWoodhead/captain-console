@@ -40,7 +40,6 @@ window.onload = function () {
 
     }
     function display_products(){
-
         products.sort(compare_products)
         let counter = 0
         let container = document.getElementById("container")
@@ -118,7 +117,6 @@ window.onload = function () {
     }
     let order_by_element = document.getElementById("sort_by")
     order_by_element.onclick = function () {
-        console.log(order_by_element.value)
         display_products();
     }
 }
