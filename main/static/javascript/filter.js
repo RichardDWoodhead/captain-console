@@ -38,7 +38,7 @@ window.onload = function () {
                         console.log("yes")
                     }
                 }
-            if(products[i].name.indexOf(search_field.value) > -1 && products[i].price <= filter_slider.value && (is_type || !checked )){
+            if(products[i].name.toLowerCase().indexOf(search_field.value.toLowerCase()) > -1 && products[i].price <= filter_slider.value && (is_type || !checked )){
 
                 if (counter % 3 === 0 && counter !== 0) {
                     container.appendChild(row)
