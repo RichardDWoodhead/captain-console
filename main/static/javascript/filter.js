@@ -1,20 +1,17 @@
 window.onload = function () {
-    let products = [
-        {"id": 1, "name": "ps2", "price": 15000, "image": "images/ps2.png", "type": "Console"},
-        {"id": 2, "name": "ps2", "price": 20000, "image": "images/ps2.png", "type": "Console"},
-        {"id": 3, "name": "ps2", "price": 15000, "image": "images/ps2.png", "type": "Game"},
-        {"id": 4, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 5, "name": "ps3", "price": 35000, "image": "images/ps3.jpg", "type": "Game"},
-        {"id": 6, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 7, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 8, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Game"},
-        {"id": 9, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Game"},
-        {"id": 10, "name": "ps3", "price": 20000, "image": "images/ps3.jpg", "type": "Console"},
-        {"id": 11, "name": "ps4", "price": 15000, "image": "images/ps4.jpg", "type": "Console"},
-        {"id": 12, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Game"},
-        {"id": 13, "name": "ps4", "price": 20000, "image": "images/ps4.jpg", "type": "Game"},
-        {"id": 14, "name": "ps4", "price": 35000, "image": "images/ps4.jpg", "type": "Game"},
-    ]
+    function getAjax() {
+        var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject('Microsoft.XMLHTTP');
+        xhr.open('GET', "get_products");
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState>3 && xhr.status===200) {
+                window["products"] = JSON.parse(xhr.response).data
+                display_products()
+            }
+        };
+        xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+        xhr.send();
+        return xhr;
+    }
     function compare_products(product_a, product_b, ){
         let order_by_value = document.getElementById("sort_by").value
         let order = order_by_value === "name";
@@ -40,6 +37,7 @@ window.onload = function () {
 
     }
     function display_products(){
+        products = window["products"]
         products.sort(compare_products)
         let counter = 0
         let container = document.getElementById("container")
@@ -103,7 +101,7 @@ window.onload = function () {
     document.getElementById("main_nav").appendChild(search)
     document.getElementById("search_form").style="display:none;"
     search.value = query
-    display_products()
+    getAjax()
     search.oninput = function(){
         display_products();
     }
