@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django import forms
-from store.models import Product
-from user.models import User
+from store.models import Product, ProductImage
+
 
 from django.http import HttpResponse, JsonResponse
 
@@ -16,8 +16,14 @@ def index(request):
 
 
 def get_products(request):
-    data = list(Product.objects.values())
-    return JsonResponse({"data": data})
+    products = [ {
+        'id' : x["id"],
+        'name' : x["name"],
+        'description' : x["description"],
+        'price': x["price"],
+        'image' : str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = 1 AND mainimage")[0].image),
+    } for x in list(Product.objects.values())]
+    return JsonResponse({"products": products})
 
 
 def product(request, product_id):
