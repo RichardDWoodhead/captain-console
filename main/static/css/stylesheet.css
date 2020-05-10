@@ -88,6 +88,10 @@
 }
 
 
+.carousel_container{
+    width: 30%;
+}
+
 .filter {
 
     border: solid gray 1px;
