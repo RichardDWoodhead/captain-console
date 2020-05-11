@@ -16,7 +16,7 @@ class Product(models.Model):
     price = models.IntegerField()
     manufacturer = models.ForeignKey(Manufacturer, on_delete=CASCADE)
     description = models.TextField()
-    year_published = models.CharField(max_length=255, default=None)
+    year_published = models.CharField(max_length=255)
     status = models.BooleanField()
     def __str__(self):
         return self.status
@@ -35,6 +35,10 @@ class Order(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
     card_number = models.CharField(max_length=255)
+    address = models.CharField(max_length=255, blank=True)
+    country = models.CharField(max_length=255, blank=True)
+    city = models.CharField(max_length=255, blank=True)
+    zip_code = models.IntegerField()
 
 
 class ProductOrder(models.Model):
