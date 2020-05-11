@@ -3,11 +3,20 @@ from django.contrib.auth.models import User
 
 
 # Create your models here.
+from django.db.models import CASCADE
+
+
+class Manufacturer(models.Model):
+    name = models.CharField(max_length=255)
+    logo = models.CharField(max_length=9999)
+
+
 class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.IntegerField()
-    manufacturer = models.CharField(max_length=255)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=CASCADE)
     description = models.TextField()
+    year_published = models.CharField(max_length=255, default=None)
     status = models.BooleanField()
     def __str__(self):
         return self.status
@@ -15,7 +24,7 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     image = models.CharField(max_length=999)
-    mainimage = models.BooleanField()
+    main_image = models.BooleanField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     def __str__(self):
         return self.image
