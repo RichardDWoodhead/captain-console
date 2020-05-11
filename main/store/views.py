@@ -35,7 +35,6 @@ def product(request, product_id):
         'other_images': list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(product_id)+" AND NOT mainimage")),
         'main_image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x.id)+" AND mainimage")[0].image),
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
-    print(cproduct[0]["other_images"])
     return render(request, "store/product_details.html", context={"product": cproduct[0]})
 
 
