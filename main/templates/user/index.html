@@ -3,12 +3,7 @@
 {% block content %}
     <div class="container">
         <div class="row profileContainer">
-            <img alt="You" class="col-2" id="profilePic" src="../static/images/Profilepic.png">
-
-
-
-
-
+            <img alt="Profile Picture" class="col-2" id="profilePic" src="../static/images/Profilepic.png">
             <div class="profileText col-4">
                 <H1>Profile Info</H1>
                 <p>Lorem ipsum dolor sit amet.</p>
@@ -18,13 +13,17 @@
             </div>
         </div>
         <div class="row">
-            <form>
-                <div class="form-group">
-                    <input type="file" class="form-control-file" accept='image/*' onchange='loadImg(event)'>
-                    <input type="submit" onclick="inn">
+            <form action="#">
+                <div>
+                    <input type="text" placeholder="Insert Profile Pic Url" id="url_input">
+                    <button  onclick="loadImg()">Preview</button>
+                    <br>
+                    <input type="submit" value="Accept Profile Picture">
                 </div>
             </form>
         </div>
     </div>
     <script type="text/javascript" src="{% static "javascript/profile.js" %}"></script>
 {% endblock %}
+
+{#https://pyxis.nymag.com/v1/imgs/d95/e05/ebe005867dedfb1c774db5bfac2e4f13cf-17-paul-blart-mall-cop-2.rsquare.w700.jpg#}
