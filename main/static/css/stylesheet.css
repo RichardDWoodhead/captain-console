@@ -1,4 +1,4 @@
-/* **********************************
+/***********************************
         Navigation Bar
 ************************************/
 #main_nav {
@@ -52,6 +52,14 @@
 
 /* Sign In */
 
+.card-container {
+    height: 600px;
+    max-width: 350px;
+    padding: 40px 40px;
+    margin-left: 40%;
+}
+
+
 #signIn{
     width: 91px;
     height: 25px;
@@ -62,7 +70,22 @@
     line-height: 23px;
     color: #FFFFFF;
 }
+/* Register */
+.centered-form{
+	margin-top: 60px;
+}
 
+.panel{
+    width: 400px;
+    border: solid gray 1px;
+    padding: 30px;
+	background: rgba(255, 255, 255, 0.8);
+	box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+}
+.btn-register {
+    margin: 10px;
+}
+/* Other */
 .cardimg{
     margin-left:10% ;
     width: 80%;
@@ -153,7 +176,7 @@
     cursor: pointer;
 }
 
-/* **********************************
+/***********************************
             Footer
 ************************************/
 
@@ -161,6 +184,6 @@
 
 
 
-/* **********************************
+/***********************************
         Screen
 ************************************/
