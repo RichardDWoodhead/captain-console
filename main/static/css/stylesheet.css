@@ -50,6 +50,10 @@
     color: #FFFFFF;
 }
 
+.product_img {
+    display: inline;
+    height: 300px;
+}
 /* Sign In */
 
 .card-container {
