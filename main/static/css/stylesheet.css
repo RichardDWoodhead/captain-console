@@ -1,6 +1,7 @@
 /***********************************
         Navigation Bar
 ************************************/
+
 #header {
     text-align: center;
     background: #373f4f;
@@ -28,7 +29,7 @@
     justify-content: left;
     vertical-align: bottom;
     padding-top: 40px;
-    margin-right: 40px;
+    margin-right: 50px;
 }
 
 .nav_link {
@@ -41,11 +42,11 @@ h5 {
     font-size: 20px;
     line-height: 23px;
     color: #8eabb7;
-
 }
 
-
-/* Rectangle 83 */
+a:hover {
+    color: #e5a93d;
+}
 
 #search{
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -69,7 +70,19 @@ h5 {
 /***********************************
         Screen
 ************************************/
+#welcome {
+    width: 100%;
+    text-align: center;
+    background-color: #c6cebd;
+    color: #e5a93d;
+}
+ .body {
+     background-color: #c6cebd;
+ }
 
+ .btn-primary {
+     background-color: #e5a93d;
+ }
 
 .card-container {
     height: 600px;
@@ -77,7 +90,6 @@ h5 {
     padding: 40px 40px;
     margin-left: 40%;
 }
-
 
 /* Register */
 .centered-form{
@@ -101,31 +113,11 @@ h5 {
     height: auto;
 }
 
-
-.row{
-    margin-top: 3%;
-}
-
-.col-md-4{
-    margin-bottom: 3%;
-}
-
-
-.page-footer {
-    margin-top: 10px;
-    background-color: #FFFFFF;
-    width: 100%;
-    box-shadow: 0px 0px 5px 0px #888888;
-    text-align: center;
-}
-
-
 .carousel_container{
     width: 30%;
 }
 
 .filter {
-
     border: solid gray 1px;
     display: flex;
     flex-flow: column wrap;
@@ -155,9 +147,7 @@ h5 {
     height: 200px;
     width: auto;
     justify-content: space-between;
-
 }
-
 
 .break {
     flex-basis: 100%;
@@ -189,7 +179,22 @@ h5 {
             Footer
 ************************************/
 
+.row{
+    margin-top: 3%;
+    color: #c6cebd;
+}
 
+.col-md-4{
+    margin-bottom: 3%;
+}
+
+.page-footer {
+    margin-top: 10px;
+    background-color: #373f4f;
+    width: 100%;
+    box-shadow: 0px 0px 5px 0px #888888;
+    text-align: center;
+}
 
 
 
