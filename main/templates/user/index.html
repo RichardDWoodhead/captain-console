@@ -1,27 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="row profileContainer">
-            <img alt="Profile Picture" class="col-2" id="profilePic" src="../static/images/Profilepic.png">
-            <div class="profileText col-4">
-                <H1>Profile Info</H1>
-                <a href="/user/login"><h5 style="font-size: 1rem">Log in</h5></a>
-                <a href="/user/register"><h5 style="font-size: 1rem">Register</h5></a>
-                <p>Lorem ipsum dolor sit amet.</p>
-                <p>Lorem ipsum dolor sit amet.</p>
-            </div>
-        </div>
-        <div class="row">
-            <form action="#">
-                <div>
-                    <input type="text" placeholder="Insert Profile Pic Url" id="url_input">
-                    <button  onclick="loadImg()">Preview</button>
-                    <br>
-                    <input type="submit" value="Accept Profile Picture">
-                </div>
-            </form>
-        </div>
+    <div>
+        <a href="/user/login"><h5 style="font-size: 1rem">Log in</h5></a>
+        <a href="/user/register"><h5 style="font-size: 1rem">Register</h5></a>
     </div>
     <script type="text/javascript" src="{% static "javascript/profile.js" %}"></script>
 {% endblock %}
