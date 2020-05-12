@@ -21,7 +21,8 @@ def get_products(request):
         'name': x["name"],
         'description': x["description"],
         'price': x["price"],
-        'image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x["id"])+" AND mainimage")[0].image),
+        'type': x["type"],
+        'image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x["id"])+" AND main_image")[0].image),
     } for x in list(Product.objects.values())]
     return JsonResponse({"products": products})
 
@@ -32,8 +33,9 @@ def product(request, product_id):
         'name': x.name,
         'description': x.description,
         'price': x.price,
-        'other_images': list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(product_id)+" AND NOT mainimage")),
-        'main_image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x.id)+" AND mainimage")[0].image),
+        'type': x.type,
+        'other_images': list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(product_id)+" AND NOT main_image")),
+        'main_image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x.id)+" AND main_image")[0].image),
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
     return render(request, "store/product_details.html", context={"product": cproduct[0]})
 
