@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
 # Create your models here.
 from django.db.models import CASCADE
 
@@ -19,6 +18,7 @@ class Product(models.Model):
     year_published = models.CharField(max_length=255)
     status = models.BooleanField()
     type = models.CharField(max_length=255)
+
     def __str__(self):
         return self.status
 
@@ -27,6 +27,7 @@ class ProductImage(models.Model):
     image = models.CharField(max_length=999)
     main_image = models.BooleanField()
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+
     def __str__(self):
         return self.image
 
@@ -46,6 +47,7 @@ class ProductOrder(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
     def __str__(self):
         return self.product
 
@@ -54,5 +56,6 @@ class Cart(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.IntegerField()
+
     def __str__(self):
         return self.product
