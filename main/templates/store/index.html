@@ -8,10 +8,16 @@
     <div class="storeIndex">
         <div class="filter sticky">
             <div class="radio">
-                <label><input class="checkbox" type="checkbox" name="Game" >Game</label>
+                <label><input class="checkbox check-box-type" type="checkbox" name="Game" >Game</label>
             </div>
             <div class="radio">
-                <label><input class="checkbox" type="checkbox" name="Console">Console</label>
+                <label><input class="checkbox check-box-type" type="checkbox" name="Console">Console</label>
+            </div>
+            <div id="manufacturers">
+                manufacturers
+                {% for manufacturer in manufacturers %}
+                    <label><input class="checkbox check-box-manufacturer" type="checkbox" name="{{ manufacturer.name }}">{{ manufacturer.name }}</label>
+                {% endfor %}
             </div>
             <div class="slider">
                 <input id="slider" value="35000" class="border-0" type="range" min="15000" max="35000" />
@@ -19,9 +25,10 @@
                     35000
                 </p>
             </div>
+
         </div>
 
-        <div id="container" class="container"><div class="row"></div></div>
+        <div id="container" class="container"><p>please wait...</p><div class="row"></div></div>
     </div>
     <script type="text/javascript" src="{% static "javascript/filter.js" %}"></script>
 {% endblock %}

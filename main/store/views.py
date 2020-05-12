@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django import forms
-from store.models import Product, ProductImage
+from store.models import Product, ProductImage, Manufacturer
 
 
 from django.http import HttpResponse, JsonResponse
@@ -12,7 +12,8 @@ class SearchForm(forms.Form):
 
 # Create your views here.
 def index(request):
-    return render(request, "store/index.html")
+    manufacturers = list(Manufacturer.objects.raw("SELECT distinct id FROM store_manufacturer"))
+    return render(request, "store/index.html", context={"manufacturers": manufacturers})
 
 
 def get_products(request):
@@ -23,8 +24,10 @@ def get_products(request):
         'price': x["price"],
         'type': x["type"],
         'image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x["id"])+" AND main_image")[0].image),
+        'manufacturer': str(Manufacturer.objects.raw("SELECT id from store_manufacturer WHERE id = " + str(x["manufacturer_id"]))[0].name),
     } for x in list(Product.objects.values())]
-    return JsonResponse({"products": products})
+    manufacturers = list(Manufacturer.objects.all().values())
+    return JsonResponse({"products": products, "manufacturers": manufacturers})
 
 
 def product(request, product_id):
@@ -36,6 +39,8 @@ def product(request, product_id):
         'type': x.type,
         'other_images': list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(product_id)+" AND NOT main_image")),
         'main_image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(x.id)+" AND main_image")[0].image),
+        'manufacturer': str(Manufacturer.objects.raw("SELECT id from store_manufacturer WHERE id = " + str(x.manufacturer_id))[0].name),
+
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
     return render(request, "store/product_details.html", context={"product": cproduct[0]})
 
