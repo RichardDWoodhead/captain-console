@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+    <div class="container marketing">
+    <h1 id="h1-profile">Profile</h1>
+    <div class="card">
+        <p>Browse for a new profile picture.</p>
+        <form class="wrapper" action="{% url 'edit_profile_pic' %}" method="POST">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-primary update" value="Update">
+        </form>
+    </div>
+    </div>
+{% endblock %}

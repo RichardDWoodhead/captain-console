@@ -1,53 +1,69 @@
 /***********************************
         Navigation Bar
 ************************************/
-#main_nav {
-    margin-top: 50px;
-    position: sticky;
-    height: 60px;
-    background-color: #FFFFFF;
+#header {
     text-align: center;
+    background: #373f4f;
+    margin: 0;
+}
+
+#main_nav {
+    position: sticky;
+    height: 120px;
+    background-color: #373f4f;
+    text-align: left;
     box-shadow: 0px 5px 5px 0px #aaaaaa;
-
+    display: flex;
+    flex-wrap: nowrap;
+}
+#logo_pic{
+    width: 100px;
+    height: 100px;
 }
 
-.navbar{
-    justify-content: space-around;
+#nav_links {
+    width: 70%;
+    height: 50px;
+    display: flex;
+    justify-content: left;
+    vertical-align: bottom;
+    padding-top: 40px;
+    margin-right: 40px;
 }
 
-/* Home */
-#home{
-    width: 54px;
-    height: 25px;
+.nav_link {
+    padding-left: 20px;
+}
 
-    font-family: Roboto;
+h5 {
     font-style: normal;
     font-weight: bold;
     font-size: 20px;
     line-height: 23px;
+    color: #8eabb7;
+
 }
+
 
 /* Rectangle 83 */
-#searchbar{
-    width: 263px;
-    height: 27px;
 
-    background: #FFF9F9;
+#search{
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
 }
 
-/* Store */
-#store{
-    width: 53px;
-    height: 25px;
+#nav_icons {
+    width: 10%;
+    height: 50px;
+    display: flex;
+    justify-content: right;
+    vertical-align: bottom;
+    padding-top: 40px;
+}
 
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-
-    color: #FFFFFF;
+.nav_icon {
+    padding-left: 20px;
+    color: #8eabb7;
 }
 
 .product_img {
@@ -55,6 +71,10 @@
     height: 300px;
 }
 /* Sign In */
+/***********************************
+        Screen
+************************************/
+
 
 .card-container {
     height: 600px;
@@ -64,16 +84,6 @@
 }
 
 
-#signIn{
-    width: 91px;
-    height: 25px;
-    font-family: Roboto;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    line-height: 23px;
-    color: #FFFFFF;
-}
 /* Register */
 .centered-form{
 	margin-top: 60px;
@@ -188,6 +198,4 @@
 
 
 
-/***********************************
-        Screen
-************************************/
+

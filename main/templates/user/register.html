@@ -1,25 +1,48 @@
 {% extends "base.html" %}
 {% load static %}
+
+{% block title %}
+    Sign Up - {{ block.super }}
+{% endblock %}
+
+
 {% block content %}
+
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-6">
+            <h4>Sign Up</h4>
+            <hr>
+            {% if messages %}
+                {% for message in messages %}
+                    <p class="alert alert-info">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
     <div class="container">
         <div class="row d-flex justify-content-center">
         <div class="col-xs-12 col-sm-8 col-md-4 col-sm-offset-2 col-md-offset-4">
         	<div class="panel panel-default">
-                <form role="form">
-                    <div class="panel-heading">
+                <div class="panel-heading">
                         <h3 class="panel-title">Register</h3>
-                    </div>
+                </div>
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {{ form }}
+
+
                     <div class="row">
                         <div class="col-xs-6 col-sm-6 col-md-6">
                             <input type="text" id="first_name" class="form-control input-sm" placeholder="First Name" required autofocus>
                         </div>
                         <div class="col-xs-6 col-sm-6 col-md-6">
-                            <input type="Last_name" id="last_name" class="form-control input-sm" placeholder="Last name" required>
+                            <input type="text" id="last_name" class="form-control input-sm" placeholder="Last name" required>
                         </div>
 
                     </div>
                     <div class="row">
-                        <input type="email" id="inputEmail" class="form-control input-md" placeholder="Email address" required>
+                        <input type="text" id="inputEmail" class="form-control input-md" placeholder="Email address" required>
                     </div>
                     <div class="row">
                         <input type="text" placeholder="Address" class="form-control input-md">
@@ -287,14 +310,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <input type="password" placeholder="Password" class="form-control input-md">
-
+                   <!--     <input type="text" id="password" placeholder="Password" class="form-control input-md">-->
+                    <input type="submit" class="btn btn-primary" value="Register" />
                     </div>
-                    <button class="btn btn-lg btn-primary btn-block btn-register" type="submit">Sign in</button>
+                    <!--<button class="btn btn-lg btn-primary btn-block btn-register" formmethod="post" type="submit">Sign in</button>-->
                 </form>
             </div>
         </div>
         </div>
+     <div class="col-lg-6 col-md-6 col-sm-6">
+            <h4>Related Links</h4>
+            <p>
+                <a href="/reset-password/">Forgot Password?</a> <br>
+                <a href="{% url 'login' %}">Login.</a> <br>
+            </p>
+     </div>
+
     </div>
 
 {% endblock %}
