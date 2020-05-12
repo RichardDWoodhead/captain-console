@@ -4,6 +4,7 @@ function getAjax() {
     xhr.onreadystatechange = function() {
         if (xhr.readyState>3 && xhr.status===200) {
             window["products"] = JSON.parse(xhr.response)["products"]
+            window["manufacturers"] = JSON.parse(xhr.response)["manufacturers"]
             display_products()
         }
     };
@@ -12,29 +13,62 @@ function getAjax() {
     return xhr;
 }
 function compare_products(product_a, product_b, ){
-        let order_by_value = document.getElementById("sort_by").value
-        let order = order_by_value === "name";
-        if (order === true){
-            if(product_a["name"] === product_b["name"]){
-                if (product_a["price"] < product_b["price"]){return -1}else{return 1}
-            }
-            else if (product_a["name"] < product_b["name"]){
-                return -1
-            } else{
-                return 1
-            }
-        } else{
-            if(product_a["price"] === product_b["price"]){
-                if (product_a["name"] < product_b["name"]){return -1}else{return 1}
-            }
-            else if (product_a["price"] < product_b["price"]){
-                return -1
-            } else{
-                return 1
-            }
+    let order_by_value = document.getElementById("sort_by").value
+    let order = order_by_value === "name";
+    if (order === true){
+        if(product_a["name"] === product_b["name"]){
+            if (parseInt(product_a["price"].replace(".","")) < parseInt(product_b["price"].replace(".",""))){return -1}else{return 1}
         }
-
+        else if (product_a["name"] < product_b["name"]){
+            return -1
+        } else{
+            return 1
+        }
+    } else{
+        if(parseInt(product_a["price"].replace(".","")) === parseInt(product_b["price"].replace(".",""))){
+            if (product_a["name"] < product_b["name"]){return -1}else{return 1}
+        }
+        else if (parseInt(product_a["price"].replace(".","")) < parseInt(product_b["price"].replace(".",""))){
+            return -1
+        } else{
+            return 1
+        }
     }
+
+}
+
+function is_checked(class_name) {
+    let checkboxes = document.getElementsByClassName(class_name)
+    for (let i = 0; i <checkboxes.length; i++){
+        if(checkboxes[i].checked){
+            return true
+        }
+    }
+    return false
+}
+
+function is_type_filter(product) {
+    let checkboxes = document.getElementsByClassName("check-box-type")
+    for (let x = 0; x < checkboxes.length; x++) {
+        if (product.type === checkboxes[x].name && checkboxes[x].checked) {
+            console.log(product.manufacturer)
+            return true
+        }
+    }
+    return false
+}
+
+function is_manufacturer_filter(product) {
+    let checkboxes = document.getElementsByClassName("check-box-manufacturer")
+    for (let x = 0; x < checkboxes.length; x++) {
+        if (product.manufacturer === checkboxes[x].name && checkboxes[x].checked) {
+            console.log(product.manufacturer)
+            return true
+        }
+    }
+    return false
+}
+
 function display_products(){
     let products = window["products"]
     products.sort(compare_products)
@@ -45,23 +79,14 @@ function display_products(){
     row.classList = "row"
     let search_field = document.getElementById("search")
     let filter_slider = document.getElementById("slider")
-    let checkboxes = document.getElementsByClassName("checkbox")
-    let checked = false
-    for (let i = 0; i <checkboxes.length; i++){
-        if(checkboxes[i].checked){
-            checked = true
-        }
-    }
-    for(let i = 0; i <products.length; i++) {
+    let type_checked = is_checked("check-box-type")
+    let manufacturer_checked = is_checked("check-box-manufacturer")
+    for (let i = 0; i < products.length; i++) {
         let is_type = false
-        for(let x = 0; x < checkboxes.length; x++ ){
-                if(products[i].type === checkboxes[x].name && checkboxes[x].checked){
-                    is_type = true
-                    console.log("yes")
-                }
-            }
-        if(products[i].name.toLowerCase().indexOf(search_field.value.toLowerCase()) > -1 && products[i].price <= filter_slider.value && (is_type || !checked )){
-
+        let is_manufacturer = false
+        is_type = is_type_filter(products[i])
+        is_manufacturer = is_manufacturer_filter(products[i])
+        if(products[i].name.toLowerCase().indexOf(search_field.value.toLowerCase()) > -1 && products[i].price <= filter_slider.value && (is_type || !type_checked )&& (is_manufacturer || !manufacturer_checked )){
             if (counter % 3 === 0 && counter !== 0) {
                 container.appendChild(row)
                 row = document.createElement("div")
@@ -104,6 +129,7 @@ window.onload = function () {
     document.getElementById("main_nav").appendChild(search)
     document.getElementById("search_form").style="display:none;"
     search.value = query
+
 
     search.oninput = function(){
         display_products();
