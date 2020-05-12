@@ -18,6 +18,7 @@ class Product(models.Model):
     description = models.TextField()
     year_published = models.CharField(max_length=255)
     status = models.BooleanField()
+    type = models.CharField(max_length=255)
     def __str__(self):
         return self.status
 
