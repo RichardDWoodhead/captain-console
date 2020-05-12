@@ -51,7 +51,6 @@ function is_type_filter(product) {
     let checkboxes = document.getElementsByClassName("check-box-type")
     for (let x = 0; x < checkboxes.length; x++) {
         if (product.type === checkboxes[x].name && checkboxes[x].checked) {
-            console.log(product.manufacturer)
             return true
         }
     }
@@ -62,7 +61,6 @@ function is_manufacturer_filter(product) {
     let checkboxes = document.getElementsByClassName("check-box-manufacturer")
     for (let x = 0; x < checkboxes.length; x++) {
         if (product.manufacturer === checkboxes[x].name && checkboxes[x].checked) {
-            console.log(product.manufacturer)
             return true
         }
     }

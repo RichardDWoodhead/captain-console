@@ -27,8 +27,6 @@ def get_products(request):
         'manufacturer': str(Manufacturer.objects.raw("SELECT id from store_manufacturer WHERE id = " + str(x["manufacturer_id"]))[0].name),
     } for x in list(Product.objects.values())]
     manufacturers = list(Manufacturer.objects.all().values())
-    print(manufacturers)
-    print(products)
     return JsonResponse({"products": products, "manufacturers": manufacturers})
 
 
