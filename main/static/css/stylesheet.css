@@ -67,6 +67,11 @@ a:hover {
     color: #8eabb7;
 }
 
+.product_img {
+    display: inline;
+    height: 300px;
+}
+/* Sign In */
 /***********************************
         Screen
 ************************************/

@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django import forms
+from store.Forms.add_to_basket import populate_cart
 from store.models import Product, ProductImage, Manufacturer
 
 
@@ -32,7 +33,7 @@ def get_products(request):
 
 def product(request, product_id):
     cproduct = [{
-        'id': x.id,
+        'id': int(x.id),
         'name': x.name,
         'description': x.description,
         'price': x.price,
@@ -42,7 +43,29 @@ def product(request, product_id):
         'manufacturer': str(Manufacturer.objects.raw("SELECT id from store_manufacturer WHERE id = " + str(x.manufacturer_id))[0].name),
 
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
-    return render(request, "store/product_details.html", context={"product": cproduct[0]})
+    form = populate_cart()
+    return render(request, "store/product_details.html", context={"product": cproduct[0], 'form': form})
+
+def add_to_cart(request):
+    if request.method == 'POST':
+        print(request.POST)
+        form = populate_cart(data = request.POST or None)
+        print(form.is_valid())
+        print(form.errors)
+        if form.is_valid():
+            form.save()
+            return product(request,request.POST['product'])
+
+        # print(request.POST)
+
+        # cproduct = [{
+        #     'product_id': order_item.id,
+        #     'user_id': order_item.user_id,
+        #     'quantity': order_item.quantity
+        # }]
+        # return render(request, "store/product_details.html", context={"product": cproduct[0]})
+    else:
+        form = populate_cart()
 
 
 def payment(request):

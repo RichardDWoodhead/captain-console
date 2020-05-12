@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CaptainConsole.apps.CaptainconsoleConfig',
-    'home.apps.HomeConfig',
+    'index.apps.HomeConfig',
     'store.apps.StoreConfig',
     'user.apps.UserConfig',
     'contact_us.apps.ContactUsConfig'
