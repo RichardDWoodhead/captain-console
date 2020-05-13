@@ -1,27 +1,26 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <div class="contactUsForm">
-        <form id="messageForm, method="POST">
-            <h2>Send us a message</h2>
-            {% csrf_token %}
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{ form.name }}
-                        {{ form.email}}
-                        {{ form.phonenumber}}
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        {{form.message }}
-                    </div>
-                </div>
-                <input type="submit" class="btn btn-primary update" value="Send Message">
 
-            </div>
+    <div class="contactUsForm">
+        <form id="messageForm, method="post">
+            <h2>Send us a message</h2>
+             <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{ form.name }}
+                            {{ form.email}}
+                            {{ form.phone_number}}
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            {{form.message }}
+                        </div>
+                    </div>
+                <input type="submit" class="btn btn-primary" value="Send Message">
         </form>
+    </div>
     </div>
 
 {% endblock %}
