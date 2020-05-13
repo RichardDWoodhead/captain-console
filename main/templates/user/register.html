@@ -5,31 +5,25 @@
     Sign Up - {{ block.super }}
 {% endblock %}
 {% block content %}
-    <div class="row">
-        <div class="col-lg-6 col-md-6 col-sm-6">
-            <h4>Sign Up</h4>
-            <hr>
+    <div id="reg_container" >
+        <div>
+            <h2>Sign Up</h2>
             {% if messages %}
                 {% for message in messages %}
                     <p class="alert alert-info">{{ message }}</p>
                 {% endfor %}
             {% endif %}
         </div>
-    </div>
-    <form class="form form-horizontal" method="post" >
+        <form id="form_reg" class="form form-horizontal" method="post" >
                     {% csrf_token %}
                     {{ form }}
-    <input type="submit" class="btn btn-primary" value="Sign up!">
-    </form>
-
-
-     <div class="col-lg-6 col-md-6 col-sm-6">
-            <p>
-                <a href="/reset-password/">Forgot Password?</a> <br>
-                <a href="{% url 'login' %}">Login</a> <br>
-            </p>
-     </div>
-
+        </form>
+        <input type="submit" class="btn btn-primary" value="Sign up!">
+        <div>
+                <br>
+                <a href="/reset-password/"><h5 style="font-size: 1rem">Forgot Password?</h5></a>
+            <a href="{% url 'login' %}"><h5 style="font-size: 1rem">Login</h5></a>
+        </div>
     </div>
 
 {% endblock %}

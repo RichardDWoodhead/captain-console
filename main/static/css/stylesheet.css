@@ -153,6 +153,21 @@ a:hover {
 .btn-register {
     margin: 10px;
 }
+
+#reg_container {
+    height: 700px;
+    max-width: 400px;
+    padding: 40px 75px 40px 75px;
+    margin-left: 30%;
+    margin-top: 50px;
+    margin-bottom: 270px;
+    border: 2px solid #373f4f;
+}
+
+.helptext {
+    font-size: small;
+}
+
 /* Other */
 .cardimg{
     margin-left:10% ;
@@ -185,6 +200,8 @@ a:hover {
     overflow: visible;
     margin: 5%;
 }
+
+
 #profilePic {
     margin: 30px 30px 30px 30px;
     border-radius: 50%;
