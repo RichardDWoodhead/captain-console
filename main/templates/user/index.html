@@ -3,12 +3,14 @@
 {% block content %}
     <div class="container">
         <div class="card-container">
+            <h2>Login: </h2>
             <form method="post" class="form form-horizontal">
                 {% csrf_token %}
                 {{ form }}
                 <input type="submit" class="btn btn-primary" value="Login" />
             </form>
         <div>
+            <br>
             <a href="/user/register"><h5 style="font-size: 1rem">Register here</h5></a>
         </div>
         </div>

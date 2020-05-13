@@ -80,12 +80,13 @@ a:hover {
     text-align: center;
     background-color: #c6cebd;
     color: #e5a93d;
-    margin-bottom: 40px;
+    margin: 40px;
 }
 
 #welcome_pic {
     width: 100%;
     text-align: center;
+    margin-bottom: 170px;
 }
 
 #console_pic {
@@ -106,10 +107,13 @@ a:hover {
  }
 
 .card-container {
-    height: 600px;
+    height: 400px;
     max-width: 350px;
-    padding: 40px 40px;
-    margin-left: 40%;
+    padding: 70px;
+    margin-left: 30%;
+    margin-top: 50px;
+    margin-bottom: 270px;
+    border: 2px solid #373f4f;
 }
 
 .card {
@@ -205,13 +209,13 @@ a:hover {
 }
 
 .contactUsForm{
-    display: flex;
-    flex-flow: row nowrap;
-    height: 30%;
-    width: 30%;
-    border: 1px solid #c3c3c3;
-    justify-content: space-between;
-    margin: 20px 20% 20px 20%;
+    height: 550px;
+    max-width: 600px;
+    padding: 70px 70px 40px 70px;
+    margin-left: 20%;
+    margin-top: 50px;
+    margin-bottom: 270px;
+    border: 2px solid #373f4f;
 }
 
 .messageForm{
