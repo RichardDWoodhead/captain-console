@@ -1,14 +1,22 @@
 from django.forms import ModelForm, widgets
-from django import forms
 from store.models import Cart
+
 
 class populate_cart(ModelForm):
     class Meta:
         model = Cart
-        exclude = [ 'id' ]
+        exclude = [ 'id']
+        labels = {
+            "product": "",
+        }
+        error_messages = {
+            'quantity': {
+                'max_length': "This writer's name is too long.",
+            },
+        }
         widgets = {
-            'user': widgets.NumberInput(attrs={'class': 'form-control'}),
-            'product': widgets.NumberInput(attrs={'class': 'form-control'}),
+            "user":widgets.HiddenInput(),
+            'product': widgets.HiddenInput(),
             'quantity': widgets.NumberInput(attrs={'class': 'form-control'})
         }
 

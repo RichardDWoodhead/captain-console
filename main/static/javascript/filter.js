@@ -91,6 +91,8 @@ function display_products(){
                 row.classList = "row"
             }
             let card = document.createElement("div")
+            let card_img_div = document.createElement("div")
+            card_img_div.classList = "card-top"
             card.classList = "card col-3"
             let card_img = document.createElement("img")
             card_img.classList = "card-top-img cardimg"
@@ -107,7 +109,8 @@ function display_products(){
             card_link.classList = "btn btn-primary"
             card_link.href = "/store/product/" + products[i].id
             card_link.innerHTML = "more details"
-            card.appendChild(card_img)
+            card_img_div.appendChild(card_img)
+            card.appendChild(card_img_div)
             card_body.appendChild(card_title)
             card_body.appendChild(card_price)
             card_body.appendChild(card_link)
