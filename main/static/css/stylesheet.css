@@ -81,13 +81,19 @@ a:hover {
     background-color: #c6cebd;
     color: #e5a93d;
 }
- .body {
-     background-color: #c6cebd;
- }
 
  .btn-primary {
      background-color: #e5a93d;
+     border: none;
+     color: #373f4f;
  }
+
+ .btn-primary:hover {
+     background-color: #373f4f;
+     border: #e5a93d;
+     color: #e5a93d;
+ }
+
 
 .card-container {
     height: 600px;
@@ -183,6 +189,9 @@ a:hover {
 /***********************************
             Footer
 ************************************/
+body{
+    background-color: #c6cebd;
+}
 
 .row{
     margin-top: 3%;
