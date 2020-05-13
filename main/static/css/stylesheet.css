@@ -140,6 +140,7 @@ a:hover {
 
 .filter {
     border: 2px solid #373f4f;
+    border-radius: 25px;
     display: flex;
     flex-flow: column wrap;
     width: 200px;
