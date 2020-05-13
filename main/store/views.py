@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django import forms
 from store.Forms.add_to_basket import populate_cart
@@ -46,6 +47,8 @@ def product(request, product_id):
     form = populate_cart()
     return render(request, "store/product_details.html", context={"product": cproduct[0], 'form': form})
 
+
+@login_required
 def add_to_cart(request):
     if request.method == 'POST':
         print(request.POST)
@@ -68,13 +71,16 @@ def add_to_cart(request):
         form = populate_cart()
 
 
+@login_required
 def payment(request):
     return render(request, "store/checkout/pay.html")
 
 
+@login_required
 def review(request):
     return render(request, "store/checkout/review.html")
 
 
+@login_required
 def confirmation(request):
     return render(request, "store/checkout/confirmation.html")

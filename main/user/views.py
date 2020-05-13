@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
 from user.form.profile_form import ImageForm
@@ -8,6 +9,7 @@ from user.models import Profile
 def user(request):
     return render(request, "user/index.html")
 
+
 def register(request):
     if request.method == 'POST':
         form = UserCreationForm(data=request.POST)
@@ -15,10 +17,11 @@ def register(request):
             form.save()
             return redirect('login')
     return render(request, 'user/register.html', {
-        'form': UserCreationForm(data=request.POST)
+        'form': UserCreationForm()
     })
 
 
+@login_required
 def profile(request):
     profile = Profile.objects.filter(user=request.user).first()
     if request.method == 'POST':
@@ -33,6 +36,7 @@ def profile(request):
     })
 
 
+@login_required
 def edit_profile_pic(request):
     profile = user.objects.filter(user=request.user).first()
     if request.method == 'POST':
@@ -41,7 +45,7 @@ def edit_profile_pic(request):
             form.save()
             return redirect("profile")
     else:
-        return render(request, 'user/edit_profile_pic.html.html', {
+        return render(request, 'user/edit_profile_pic.html', {
             'form': ImageForm(instance=profile)
         })
 
