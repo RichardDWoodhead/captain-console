@@ -80,6 +80,17 @@ a:hover {
     text-align: center;
     background-color: #c6cebd;
     color: #e5a93d;
+    margin-bottom: 40px;
+}
+
+#welcome_pic {
+    width: 100%;
+    text-align: center;
+}
+
+#console_pic {
+    border-radius: 25px;
+    border: 2px solid #373f4f;
 }
 
  .btn-primary {
