@@ -116,16 +116,23 @@ a:hover {
     margin-right: 3%;
     margin-bottom: 3%;
     display: flex;
+    flex-direction: column;
 }
 
+.card-top {
+    height: 250px;
+    align-items: center;
+}
+
+.card-top-img {
+    align-items: center;
+
+}
 .card-body {
     align-self: center;
     justify-content: end;
 }
 
-.card-top-img {
-    height: 160px;
-}
 
 /* Register */
 .centered-form{
