@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django import forms
 from store.Forms.add_to_basket import populate_cart
 from store.models import Product, ProductImage, Manufacturer, Cart
@@ -43,20 +43,20 @@ def product(request, product_id):
         'manufacturer': str(Manufacturer.objects.raw("SELECT id from store_manufacturer WHERE id = " + str(x.manufacturer_id))[0].name),
 
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
-    form = populate_cart()
+    data = {"product": product_id, "user": "1", "quantity": "1"}
+    form = populate_cart(data=data)
     return render(request, "store/product_details.html", context={"product": cproduct[0], 'form': form})
 
 
 @login_required
 def add_to_cart(request):
+    data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
+
     if request.method == 'POST':
-        print(request.POST)
-        form = populate_cart(data = request.POST or None)
-        print(form.is_valid())
-        print(form.errors)
+        form = populate_cart(data=data or None)
         if form.is_valid():
             form.save()
-            return product(request,request.POST['product'])
+            return redirect("product/"+data["product"])
 
         # print(request.POST)
 
@@ -75,8 +75,7 @@ def cart(request):
         "product": Product.objects.get(id=x.product_id).name,
         "user": x.user_id,
         "quantity": x.quantity,
-    }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =1")]
-    print(cart_items)
+    }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))]
     return render(request, "store/cart.html", context={"cart_items": cart_items})
 
 
