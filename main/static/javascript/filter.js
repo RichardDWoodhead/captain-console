@@ -5,6 +5,12 @@ function getAjax() {
         if (xhr.readyState>3 && xhr.status===200) {
             window["products"] = JSON.parse(xhr.response)["products"]
             window["manufacturers"] = JSON.parse(xhr.response)["manufacturers"]
+            let filter_slider = document.getElementById("slider")
+            let products = window["products"]
+            filter_slider.max = Math.max.apply(Math, products.map(function(product) { return parseInt(product.price.replace(".","")); }))
+            filter_slider.min = Math.min.apply(Math, products.map(function(product) { return parseInt(product.price.replace(".","")); }))
+            filter_slider.value = filter_slider.max
+            document.getElementById("slider_info").innerText =filter_slider.value
             display_products()
         }
     };
@@ -84,7 +90,7 @@ function display_products(){
         let is_manufacturer = false
         is_type = is_type_filter(products[i])
         is_manufacturer = is_manufacturer_filter(products[i])
-        if(products[i].name.toLowerCase().indexOf(search_field.value.toLowerCase()) > -1 && products[i].price <= filter_slider.value && (is_type || !type_checked )&& (is_manufacturer || !manufacturer_checked )){
+        if(products[i].name.toLowerCase().indexOf(search_field.value.toLowerCase()) > -1 && parseInt(products[i].price.replace(".","")) <= parseInt(filter_slider.value) && (is_type || !type_checked )&& (is_manufacturer || !manufacturer_checked )){
             if (counter % 3 === 0 && counter !== 0) {
                 container.appendChild(row)
                 row = document.createElement("div")
@@ -134,6 +140,7 @@ window.onload = function () {
     search.oninput = function(){
         display_products();
     }
+
     let filter_slider = document.getElementById("slider")
     filter_slider.oninput = function(){
         document.getElementById("slider_info").innerText =filter_slider.value
