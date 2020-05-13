@@ -2,8 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django import forms
 from store.Forms.add_to_basket import populate_cart
-from store.models import Product, ProductImage, Manufacturer
-
+from store.models import Product, ProductImage, Manufacturer, Cart
 
 from django.http import HttpResponse, JsonResponse
 
@@ -69,6 +68,16 @@ def add_to_cart(request):
         # return render(request, "store/product_details.html", context={"product": cproduct[0]})
     else:
         form = populate_cart()
+
+
+def cart(request):
+    cart_items = [{
+        "product": Product.objects.get(id=x.product_id).name,
+        "user": x.user_id,
+        "quantity": x.quantity,
+    }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =1")]
+    print(cart_items)
+    return render(request, "store/cart.html", context={"cart_items": cart_items})
 
 
 @login_required
