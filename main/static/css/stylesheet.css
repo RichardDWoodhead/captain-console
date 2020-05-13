@@ -139,6 +139,9 @@ a:hover {
 }
 
 .filter {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20%;
     border: 2px solid #373f4f;
     border-radius: 25px;
     display: flex;
@@ -150,7 +153,10 @@ a:hover {
 }
 .storeIndex {
     display: flex;
-    justify-content: space-evenly;
+    position: relative;
+    justify-content: space-around;
+    align-items: flex-start;
+    overflow: visible;
     margin: 5%;
 }
 #profilePic {
