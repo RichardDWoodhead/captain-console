@@ -107,7 +107,7 @@ function display_products(){
             card_link.classList = "btn btn-primary"
             card_link.href = "/store/product/" + products[i].id
             card_link.innerHTML = "more details"
-            card_body.appendChild(card_img)
+            card.appendChild(card_img)
             card_body.appendChild(card_title)
             card_body.appendChild(card_price)
             card_body.appendChild(card_link)
@@ -118,13 +118,12 @@ function display_products(){
     }
     container.appendChild(row)
 }
-
+getAjax()
 window.onload = function () {
-    getAjax()
     const urlParams = new URLSearchParams(window.location.search);
     const query = urlParams.get('query');
     let search = document.getElementById("search")
-    document.getElementById("main_nav").appendChild(search)
+    document.getElementById("search_div").appendChild(search)
     document.getElementById("search_form").style="display:none;"
     search.value = query
 
