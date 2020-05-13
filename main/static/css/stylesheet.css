@@ -105,7 +105,6 @@ a:hover {
      color: #e5a93d;
  }
 
-
 .card-container {
     height: 600px;
     max-width: 350px;
@@ -140,13 +139,13 @@ a:hover {
 }
 
 .filter {
-    border: solid gray 1px;
+    border: 2px solid #373f4f;
     display: flex;
     flex-flow: column wrap;
     width: 200px;
     height: fit-content;
     padding: 20px 30px 20px 30px;
-
+    margin-right: 40px;
 }
 .storeIndex {
     display: flex;
