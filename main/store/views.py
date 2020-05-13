@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django import forms
 from store.Forms.add_to_basket import populate_cart
+from store.Forms.payment_info_form import payment_info_form
 from store.models import Product, ProductImage, Manufacturer, Cart
 
 from django.http import HttpResponse, JsonResponse
@@ -82,7 +83,14 @@ def cart(request):
 
 @login_required
 def payment(request):
-    return render(request, "store/checkout/pay.html")
+    return render(request, "store/checkout/payment.html", context={'form': payment_info_form})
+
+def add_payment_info(request):
+    if request.method == "POST":
+        form = payment_info_form(data=request.POST or None)
+        if form.is_valid():
+            form.save()
+            return product(request, request.POST['product'])
 
 
 @login_required
