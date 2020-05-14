@@ -98,13 +98,13 @@ function display_products(){
             }
             let card = document.createElement("div")
             let card_img_div = document.createElement("div")
-            card_img_div.classList = "card-top"
+            card_img_div.classList = "card-top border-bottom"
             card.classList = "card col-3"
             let card_img = document.createElement("img")
             card_img.classList = "card-top-img cardimg"
             card_img.src = products[i].image
             let card_body = document.createElement("div")
-            card_body.classList = "card-body border-top"
+            card_body.classList = "card-body"
             let card_title = document.createElement("h5")
             card_title.classList = "card-title"
             card_title.innerHTML = products[i].name
