@@ -76,7 +76,9 @@ def cart(request):
         "product": Product.objects.get(id=x.product_id).name,
         "user": x.user_id,
         "quantity": x.quantity,
+        "image": list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(x.product_id)+" and main_image"))[0].image
     }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))]
+    print(list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(1)))[0].image)
     return render(request, "store/cart.html", context={"cart_items": cart_items})
 
 
