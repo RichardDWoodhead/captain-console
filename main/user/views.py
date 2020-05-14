@@ -31,8 +31,10 @@ def profile(request):
             profile.user = request.user
             profile.save()
             return redirect('profile')
+    user = dict(Profile.objects.get(user_id=request.user.id))
     return render(request, 'user/profile.html', {
-        'form': ProfileForm(instance=profile)
+        'form': ProfileForm(instance=profile),
+        'user': user
     })
 
 

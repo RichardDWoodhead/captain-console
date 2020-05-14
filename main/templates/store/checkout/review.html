@@ -13,13 +13,31 @@
                 <div class="row" style="color: #373f4f">Zip-Code: {{ data.zip_code }}</div>
             </div>
             <br>
-            <form action="{%url 'confirmation' %}" method="post"/>
+            <form action="{%url 'edit_payment' %}" method="post">
+                <div style="display: None">
+                    {% csrf_token %}
+                    {{ form }}
+                </div>
+                <button type="submit">Edit Payment</button>
+            </form>
+
+            <form action="{% url 'confirmation' %}" method="post"/>
                 <div style="display: None">
                     {% csrf_token %}
                     {{ form }}
                 </div>
                 <button type="submit">Confirm</button>
             </form>
+
+            <div>
+                {% for item in cart_items %}
+                    <div class="cart_item">
+                        <img id="cart_image" src="{{ item.image }}" alt="">
+                        <h5 id="prod_name"> {{ item.product }} </h5>
+                        <p id="quantity"> {{ item.quantity }}</p>
+                    </div>
+                {% endfor %}
+            </div>
         </div>
 
     </div>
