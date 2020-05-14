@@ -98,7 +98,7 @@ function display_products(){
             }
             let card = document.createElement("div")
             let card_img_div = document.createElement("div")
-            card_img_div.classList = "card-top border-bottom"
+            card_img_div.classList = "card-top"
             card.classList = "card col-3"
             let card_img = document.createElement("img")
             card_img.classList = "card-top-img cardimg"

@@ -128,7 +128,7 @@ a:hover {
 }
 
 .card-top {
-    min-height: 230px;
+    min-height: 60%;
     width: 100%;
     margin: 0;
     display: flex;
@@ -139,10 +139,11 @@ a:hover {
 .card-top-img {
     margin: 0;
     width: 80%;
+    max-height: 80%;
 }
 .card-body {
     width: 100%;
-    min-height: 105px;
+    min-height: 10%;
     padding: 20px 0px 0px 0px;
     position: absolute;
     bottom: 15px;
