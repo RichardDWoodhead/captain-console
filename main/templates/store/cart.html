@@ -2,12 +2,15 @@
 {% block content %}
     <div class="shopping_cart">
     <h2>Shopping cart</h2>
-
-    {% for item in cart_items %}
-        <h5>{{ item.product }}</h5>
-        <p>{{ item.quantity }}</p>
-    {% endfor %}
-
+    <div class="container">
+        {% for item in cart_items %}
+            <div class="row">
+                <h5>{{ item.product }}</h5>
+                <p>{{ item.quantity }}</p>
+                <img src="{{ item.image }}" alt="picture">
+            </div>
+        {% endfor %}
+    </div>
     <a href="checkout/payment">pay Now!</a>
     </div>
 {% endblock %}

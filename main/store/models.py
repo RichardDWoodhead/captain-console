@@ -33,14 +33,16 @@ class ProductImage(models.Model):
 
 
 class Order(models.Model):
-    date = models.DateField()
+    date = models.DateField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
-    card_number = models.CharField(max_length=255)
+    full_name = models.CharField(max_length=255)
+    card_number = models.IntegerField()
+    cvc = models.IntegerField()
     address = models.CharField(max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255, blank=True)
-    zip_code = models.IntegerField()
+    zip_code = models.CharField(max_length=10)
 
 
 class ProductOrder(models.Model):
@@ -58,4 +60,4 @@ class Cart(models.Model):
     quantity = models.IntegerField()
 
     def __str__(self):
-        return self.product
+        return str(self.product)
