@@ -15,6 +15,10 @@
     {% endfor %}
         <h5>total: {{ total }}</h5>
     <a href="checkout/payment" class="btn btn-primary">Pay Now!</a>
+        <form method="post" action="{% url "clear_cart" %}">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit"> clear cart</button>
+        </form>
     {% endif %}
     </div>
 {% endblock %}

@@ -68,6 +68,19 @@ def add_to_cart(request):
 
 
 @login_required
+def clear_cart(request):
+    if request.method == "POST":
+        try:
+            cart_items = Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))
+            for item in cart_items:
+                item.delete()
+            return redirect("cart")
+        except:
+            return redirect("cart")
+    return redirect("cart")
+
+
+@login_required
 def cart(request):
     cart_items = [{
         "product": Product.objects.get(id=x.product_id).name,
