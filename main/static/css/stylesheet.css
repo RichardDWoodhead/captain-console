@@ -53,8 +53,12 @@ a:hover {
     margin-top: 50px;
 }
 
+#logout {
+    display: none;
+}
+
 #nav_icons {
-    width: 10%;
+    width: 15%;
     height: 50px;
     display: flex;
     justify-content: right;
@@ -107,9 +111,9 @@ a:hover {
  }
 
 .card-container {
-    height: 400px;
+    height: 500px;
     max-width: 350px;
-    padding: 70px;
+    padding: 60px;
     margin-left: 30%;
     margin-top: 50px;
     margin-bottom: 270px;
@@ -177,6 +181,10 @@ a:hover {
 }
 
 .helptext {
+    font-size: small;
+}
+
+.errorlist {
     font-size: small;
 }
 
