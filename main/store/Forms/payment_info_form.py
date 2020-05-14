@@ -259,7 +259,6 @@ class PaymentInfoForm(ModelForm):
             'user': widgets.HiddenInput(),
             'cardholder_name': widgets.TextInput(attrs={'class': 'form-control' , 'placeholder': 'Name of Cardholder' }),
             'card_number': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Credit-card Number'}),
-            'cvc': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'CVC'}),
             'address': widgets.TextInput(attrs={'class': 'form-control' , 'placeholder': 'Address'}),
             'country': widgets.Select(attrs={'class': 'form-control'}, choices=COUNTRIES),
             'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),

@@ -8,10 +8,6 @@ from store.models import Product, ProductImage, Manufacturer, Cart, Order
 from django.http import HttpResponse, JsonResponse
 
 
-class SearchForm(forms.Form):
-    query = forms.CharField(label='query', max_length=100)
-
-
 # Create your views here.
 def index(request):
     manufacturers = list(Manufacturer.objects.raw("SELECT distinct id FROM store_manufacturer"))
@@ -92,12 +88,24 @@ def payment(request):
     if request.method == "POST":
         data = request.POST.copy()
         data['user'] = request.user.id
-        # data = {"cardholder_name": request.POST["cardholder_name"], "user": request.user, "card_number":request.POST["card_number"], "address": request.POST["address"], "country": request.POST["country"], "city": request.POST["city"], "zip_code": request.POST["zip_code"], "cvc": request.POST["cvc"] , "full_name": request.POST["full_name"]}
         form = PaymentInfoForm(data=data or None)
-        print(form.is_valid())
         if form.is_valid():
-            return render(request, "store/checkout/review.html", context={'form': form, 'data': data})
+            cart_items = [{
+                "product": Product.objects.get(id=x.product_id).name,
+                "user": x.user_id,
+                "quantity": x.quantity,
+                "image": list(ProductImage.objects.raw(
+                    "SELECT id from store_productimage WHERE product_id =" + str(x.product_id) + " and main_image"))[
+                    0].image
+            } for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =" + str(request.user.id))]
+            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items})
     return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
+
+
+@login_required
+def edit_payment(request):
+    if request.method == "POST":
+        return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm(data=request.POST)})
 
 
 @login_required
