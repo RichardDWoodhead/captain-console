@@ -42,6 +42,7 @@ h5 {
     font-size: 20px;
     line-height: 23px;
     color: #8eabb7;
+    font-family: 'Roboto', sans-serif;
 }
 
 a:hover {
@@ -53,9 +54,6 @@ a:hover {
     margin-top: 50px;
 }
 
-#logout {
-    
-}
 
 #nav_icons {
     width: 15%;
@@ -71,14 +69,15 @@ a:hover {
     color: #8eabb7;
 }
 
-.product_img {
-    display: inline;
-    height: 300px;
-}
-/* Sign In */
 /***********************************
         Screen
 ************************************/
+body{
+    background-color: #c6cebd;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Sign In */
 #welcome {
     width: 100%;
     text-align: center;
@@ -126,7 +125,6 @@ a:hover {
     border: 2px solid #373f4f;
     width: 200px;
     height: 420px;
-   /* position: relative;*/
     text-align: center;
     padding: 0;
 }
@@ -153,6 +151,10 @@ a:hover {
     bottom: 15px;
 }
 
+.product_img {
+    display: inline;
+    height: 300px;
+}
 
 /* Register */
 .centered-form{
@@ -178,6 +180,31 @@ a:hover {
     margin-top: 50px;
     margin-bottom: 270px;
     border: 2px solid #373f4f;
+}
+
+.shopping_cart {
+    width: 70%;
+    height: auto;
+    margin: 80px 0 100px 80px;
+    box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+    border-radius: 6px;
+    border: 2px solid #373f4f;;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+
+.cart_item {
+  padding: 20px 30px;
+  height: 120px;
+  display: flex;
+  border-top:  1px solid #373f4f;
+  justify-content: space-between;
+}
+
+#cart_image {
+    max-height: 80px;
+    max-width: 80px;
 }
 
 .helptext {
@@ -264,9 +291,6 @@ a:hover {
 /***********************************
             Footer
 ************************************/
-body{
-    background-color: #c6cebd;
-}
 
 .row{
     margin-top: 0%;
