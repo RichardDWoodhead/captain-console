@@ -68,15 +68,32 @@ def add_to_cart(request):
 
 
 @login_required
+def clear_cart(request):
+    if request.method == "POST":
+        try:
+            cart_items = Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))
+            for item in cart_items:
+                item.delete()
+            return redirect("cart")
+        except:
+            return redirect("cart")
+    return redirect("cart")
+
+
+@login_required
 def cart(request):
     cart_items = [{
         "product": Product.objects.get(id=x.product_id).name,
+        "price": int(Product.objects.get(id=x.product_id).price.replace(".", "")),
         "user": x.user_id,
         "quantity": x.quantity,
         "image": list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(x.product_id)+" and main_image"))[0].image
     }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))]
+    total = 0
+    for i in range(len(cart_items)):
+        total += int(cart_items[i]["price"])
     print(list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(1)))[0].image)
-    return render(request, "store/cart.html", context={"cart_items": cart_items})
+    return render(request, "store/cart.html", context={"cart_items": cart_items, "total": total})
 
 
 @login_required
