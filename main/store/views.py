@@ -85,6 +85,14 @@ def cart(request):
 
 @login_required
 def payment(request):
+    if request.method == "POST":
+        data = request.POST.copy()
+        data['user'] = request.user.id
+        # data = {"cardholder_name": request.POST["cardholder_name"], "user": request.user, "card_number":request.POST["card_number"], "address": request.POST["address"], "country": request.POST["country"], "city": request.POST["city"], "zip_code": request.POST["zip_code"], "cvc": request.POST["cvc"] , "full_name": request.POST["full_name"]}
+        form = payment_info_form(data=data or None)
+        print(form.is_valid())
+        if form.is_valid():
+            return render(request, "store/checkout/review.html", context={'form':form, 'data':data})
     return render(request, "store/checkout/payment.html", context={'form': payment_info_form})
 
 
@@ -104,4 +112,19 @@ def review(request):
 
 @login_required
 def confirmation(request):
-    return render(request, "store/checkout/confirmation.html")
+    if request.method == "POST":
+        order_form = payment_info_form(data = request.POST)
+        if order_form.is_valid():
+            order_form.save()
+            cart_items = list(Cart.objects.all().filter(user_id=request.user.id))
+            current_order = list(Order.objects.raw('select id from store_order where user_id ='+ str(request.user.id)))[0]
+            data = {'order': int(current_order.id)}
+            for item in cart_items:
+                data['product'] = int(item.product_id)
+                data['quantity'] = int(item.quantity)
+                current_form = place_order_form(data=data)
+                if current_form.is_valid():
+                    current_form.save()
+                    item.delete()
+
+        return render(request, "store/checkout/confirmation.html")
