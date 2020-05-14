@@ -2,7 +2,7 @@ from django.forms import ModelForm, widgets
 from store.models import Cart
 
 
-class populate_cart(ModelForm):
+class PopulateCart(ModelForm):
     class Meta:
         model = Cart
         exclude = [ 'id']

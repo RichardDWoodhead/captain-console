@@ -1,7 +1,8 @@
 from django.forms import ModelForm, widgets
 from store.models import ProductOrder
 
-class place_order_form(ModelForm):
+
+class PlaceOrderForm(ModelForm):
     class Meta:
         model = ProductOrder
         exclude = ['id']
