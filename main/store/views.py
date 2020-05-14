@@ -75,12 +75,16 @@ def add_to_cart(request):
 def cart(request):
     cart_items = [{
         "product": Product.objects.get(id=x.product_id).name,
+        "price": int(Product.objects.get(id=x.product_id).price.replace(".", "")),
         "user": x.user_id,
         "quantity": x.quantity,
         "image": list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(x.product_id)+" and main_image"))[0].image
     }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))]
+    total = 0
+    for i in range(len(cart_items)):
+        total += int(cart_items[i]["price"])
     print(list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(1)))[0].image)
-    return render(request, "store/cart.html", context={"cart_items": cart_items})
+    return render(request, "store/cart.html", context={"cart_items": cart_items, "total": total})
 
 
 @login_required
@@ -92,7 +96,7 @@ def payment(request):
         form = PaymentInfoForm(data=data or None)
         print(form.is_valid())
         if form.is_valid():
-            return render(request, "store/checkout/review.html", context={'form':form, 'data':data})
+            return render(request, "store/checkout/review.html", context={'form': form, 'data': data})
     return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
 
 
