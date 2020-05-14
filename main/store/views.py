@@ -33,7 +33,7 @@ def get_products(request):
 
 
 def product(request, product_id):
-    cproduct = [{
+    product = [{
         'id': int(x.id),
         'name': x.name,
         'description': x.description,
@@ -71,6 +71,7 @@ def add_to_cart(request):
         form = populate_cart()
 
 
+@login_required
 def cart(request):
     cart_items = [{
         "product": Product.objects.get(id=x.product_id).name,
@@ -86,6 +87,8 @@ def cart(request):
 def payment(request):
     return render(request, "store/checkout/payment.html", context={'form': payment_info_form})
 
+
+@login_required
 def add_payment_info(request):
     if request.method == "POST":
         form = payment_info_form(data=request.POST or None)

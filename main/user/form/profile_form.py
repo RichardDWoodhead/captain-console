@@ -8,7 +8,8 @@ class ProfileForm(ModelForm):
         model = User
         exclude = ['id', 'user', 'username', 'password', 'search_history']
         widgets = {
-            'name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'first_name': widgets.TextInput(attrs={'class': 'form-control'}),
+            'last_name': widgets.TextInput(attrs={'class': 'form-control'}),
             'phone_nr': widgets.NumberInput(attrs={'class': 'form-control'}),
             'email': widgets.TextInput(attrs={'class': 'form-control'}),
             'profile_pic': widgets.TextInput(attrs={'class': 'form-control'}),
