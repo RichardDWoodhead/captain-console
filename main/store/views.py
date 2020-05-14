@@ -3,7 +3,8 @@ from django.shortcuts import render, redirect
 from django import forms
 from store.Forms.add_to_basket import PopulateCart
 from store.Forms.payment_info_form import PaymentInfoForm
-from store.models import Product, ProductImage, Manufacturer, Cart
+from store.Forms.place_order_form import PlaceOrderForm
+from store.models import Product, ProductImage, Manufacturer, Cart, Order
 from django.http import HttpResponse, JsonResponse
 
 
@@ -32,7 +33,7 @@ def get_products(request):
 
 
 def product(request, product_id):
-    product = [{
+    cproduct = [{
         'id': int(x.id),
         'name': x.name,
         'description': x.description,
@@ -121,7 +122,7 @@ def confirmation(request):
             for item in cart_items:
                 data['product'] = int(item.product_id)
                 data['quantity'] = int(item.quantity)
-                current_form = place_order_form(data=data)
+                current_form = PlaceOrderForm(data=data)
                 if current_form.is_valid():
                     current_form.save()
                     item.delete()
