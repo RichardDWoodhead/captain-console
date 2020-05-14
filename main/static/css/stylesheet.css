@@ -125,7 +125,6 @@ body{
     border: 2px solid #373f4f;
     width: 200px;
     height: 420px;
-   /* position: relative;*/
     text-align: center;
     padding: 0;
 }
@@ -186,7 +185,7 @@ body{
 .shopping_cart {
     width: 70%;
     height: auto;
-    margin: 80px 0 0 40px;
+    margin: 80px 0 100px 80px;
     box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
     border-radius: 6px;
     border: 2px solid #373f4f;;
@@ -199,11 +198,14 @@ body{
   padding: 20px 30px;
   height: 120px;
   display: flex;
-  border-top:  1px solid #E1E8EE;
-  border-bottom:  1px solid #E1E8EE;
+  border-top:  1px solid #373f4f;
   justify-content: space-between;
 }
 
+#cart_image {
+    max-height: 80px;
+    max-width: 80px;
+}
 
 .helptext {
     font-size: small;
