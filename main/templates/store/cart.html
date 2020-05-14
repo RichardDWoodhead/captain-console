@@ -2,6 +2,10 @@
 {% block content %}
     <div class="shopping_cart">
     <h2>Shopping cart</h2>
+    {% if cart_items|length < 1 %}
+        <div>Your cart is empty!</div>
+        <a href="{% url 'store_index' %}"><button class="btn btn-primary">Go to store</button></a>
+    {% else %}
     {% for item in cart_items %}
         <div class="cart_item">
             <img id="cart_image" src="{{ item.image }}" alt="">
@@ -9,6 +13,8 @@
             <p id="quantity"> {{ item.quantity }}</p>
         </div>
     {% endfor %}
+
     <a href="checkout/payment" class="btn btn-primary">Pay Now!</a>
+    {% endif %}
     </div>
 {% endblock %}

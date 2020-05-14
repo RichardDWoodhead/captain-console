@@ -3,9 +3,21 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <form action="{%url 'confirmation' %}" method="post">
-                {% csrf_token %}
-                {{ form }}
+            <div class="container">
+                <div class="row" style="color: #373f4f">Full Name: {{ data.full_name }}</div>
+                <div class="row" style="color: #373f4f">Cardholder Name: {{ data.cardholder_name }}</div>
+                <div class="row" style="color: #373f4f">Credit Card: {{ data.card_number }}</div>
+                <div class="row" style="color: #373f4f">Address: {{ data.address }}</div>
+                <div class="row" style="color: #373f4f">Country: {{ data.country }}</div>
+                <div class="row" style="color: #373f4f">City: {{ data.city }}</div>
+                <div class="row" style="color: #373f4f">Zip-Code: {{ data.zip_code }}</div>
+            </div>
+            <br>
+            <form action="{%url 'confirmation' %}" method="post"/>
+                <div style="display: None">
+                    {% csrf_token %}
+                    {{ form }}
+                </div>
                 <button type="submit">Confirm</button>
             </form>
         </div>

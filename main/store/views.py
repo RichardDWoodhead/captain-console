@@ -92,7 +92,7 @@ def payment(request):
         form = payment_info_form(data=data or None)
         print(form.is_valid())
         if form.is_valid():
-            return render(request, "store/checkout/review.html", context={'form':form})
+            return render(request, "store/checkout/review.html", context={'form':form, 'data':data})
     return render(request, "store/checkout/payment.html", context={'form': payment_info_form})
 
 
@@ -120,5 +120,5 @@ def confirmation(request):
                 if current_form.is_valid():
                     current_form.save()
                     item.delete()
-            
+
         return render(request, "store/checkout/confirmation.html")
