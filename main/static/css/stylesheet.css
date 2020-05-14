@@ -117,19 +117,19 @@ a:hover {
 }
 
 .card {
-    margin-right: 3%;
-    margin-bottom: 3%;
+    margin: 0px 20px 20px 20px;
     border-radius: 10px;
     border: 2px solid #373f4f;
-    width: 220px;
+    width: 200px;
     height: 420px;
-    position: relative;
+   /* position: relative;*/
     text-align: center;
+    padding: 0;
 }
 
 .card-top {
     min-height: 230px;
-    width: 190px;
+    width: 100%;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -141,7 +141,7 @@ a:hover {
     width: 80%;
 }
 .card-body {
-    width: 190px;
+    width: 100%;
     min-height: 105px;
     padding: 20px 0px 0px 0px;
     position: absolute;
@@ -193,10 +193,10 @@ a:hover {
     border-radius: 10px;
     display: flex;
     flex-flow: column wrap;
-    width: 200px;
-    height: fit-content;
-    padding: 20px 30px 20px 30px;
-    margin-right: 40px;
+    width: 220px;
+    height: 420px;
+    padding: 5px 30px 5px 30px;
+    margin-right: 20px;
 }
 .storeIndex {
     display: flex;
