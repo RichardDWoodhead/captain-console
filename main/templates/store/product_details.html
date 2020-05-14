@@ -1,16 +1,20 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-    <div class="container">
-        <div class="row">
+ <div class="container">
+    <div id="det_upper">
+        <div id="main_img" class="row">
             <img src="{{ product.main_image }}" class="product_img">
-
         </div>
-        <form action="/store/add_to_cart" method="post">
-            {% csrf_token %}
-            {{ form }}
-            <button class="btn btn-lg btn-primary" type="submit">Add to basket</button>
-        </form>
+        <div id="det_right">
+            <div id="description"> {{ product.description }} </div>
+            <form id="to_cart" action="/store/add_to_cart" method="post">
+                {% csrf_token %}
+                {{ form }}
+                <button class="btn btn-lg btn-primary" type="submit">Add to basket</button>
+            </form>
+        </div>
+    </div>
         <div id="carousel_container" class="container">
             <div id="carousel" class="carousel slide" data-ride="carousel">
                 <ol class="carousel-indicators">
@@ -20,7 +24,6 @@
                 </ol>
                 <div class="carousel-inner">
                     {% for image in product.other_images %}
-
                             <div class="carousel-item {% if image == product.other_images.0 %} active {% endif %}">
                                 <img class="d-block w-100" src="{{image}}" alt="game image">
                             </div>
@@ -36,7 +39,7 @@
                 </a>
             </div>
         </div>
-    </div>
+ </div>
 <script type="text/javascript" src="{% static "javascript/basket.js" %}"></script>
 
 {% endblock %}
