@@ -250,7 +250,8 @@ COUNTRIES = [
     ('ZW', 'Zimbabwe')
 ]
 
-class payment_info_form(ModelForm):
+
+class PaymentInfoForm(ModelForm):
     class Meta:
         model = Order
         exclude = ['id', 'date']

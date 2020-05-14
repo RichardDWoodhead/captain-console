@@ -1,16 +1,11 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django import forms
-from store.Forms.add_to_basket import populate_cart
-from store.Forms.payment_info_form import payment_info_form
-from store.Forms.place_order_form import place_order_form
+from store.Forms.add_to_basket import PopulateCart
+from store.Forms.payment_info_form import PaymentInfoForm
+from store.Forms.place_order_form import PlaceOrderForm
 from store.models import Product, ProductImage, Manufacturer, Cart, Order
-
 from django.http import HttpResponse, JsonResponse
-
-
-class SearchForm(forms.Form):
-    query = forms.CharField(label='query', max_length=100)
 
 
 # Create your views here.
@@ -46,7 +41,7 @@ def product(request, product_id):
 
     } for x in list(Product.objects.raw("SELECT id from store_product WHERE id ="+str(product_id)))]
     data = {"product": product_id, "user": "1", "quantity": "1"}
-    form = populate_cart(data=data)
+    form = PopulateCart(data=data)
     return render(request, "store/product_details.html", context={"product": cproduct[0], 'form': form})
 
 
@@ -55,7 +50,7 @@ def add_to_cart(request):
     data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
 
     if request.method == 'POST':
-        form = populate_cart(data=data or None)
+        form = PopulateCart(data=data or None)
         if form.is_valid():
             form.save()
             return redirect("product/"+data["product"])
@@ -69,9 +64,10 @@ def add_to_cart(request):
         # }]
         # return render(request, "store/product_details.html", context={"product": cproduct[0]})
     else:
-        form = populate_cart()
+        form = PopulateCart()
 
 
+@login_required
 def cart(request):
     cart_items = [{
         "product": Product.objects.get(id=x.product_id).name,
@@ -88,15 +84,33 @@ def payment(request):
     if request.method == "POST":
         data = request.POST.copy()
         data['user'] = request.user.id
-        # data = {"cardholder_name": request.POST["cardholder_name"], "user": request.user, "card_number":request.POST["card_number"], "address": request.POST["address"], "country": request.POST["country"], "city": request.POST["city"], "zip_code": request.POST["zip_code"], "cvc": request.POST["cvc"] , "full_name": request.POST["full_name"]}
-        form = payment_info_form(data=data or None)
-        print(form.is_valid())
+        form = PaymentInfoForm(data=data or None)
         if form.is_valid():
-            return render(request, "store/checkout/review.html", context={'form':form, 'data':data})
-    return render(request, "store/checkout/payment.html", context={'form': payment_info_form})
+            cart_items = [{
+                "product": Product.objects.get(id=x.product_id).name,
+                "user": x.user_id,
+                "quantity": x.quantity,
+                "image": list(ProductImage.objects.raw(
+                    "SELECT id from store_productimage WHERE product_id =" + str(x.product_id) + " and main_image"))[
+                    0].image
+            } for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =" + str(request.user.id))]
+            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items})
+    return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
 
 
+@login_required
+def edit_payment(request):
+    if request.method == "POST":
+        return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm(data=request.POST)})
 
+
+@login_required
+def add_payment_info(request):
+    if request.method == "POST":
+        form = PaymentInfoForm(data=request.POST or None)
+        if form.is_valid():
+            form.save()
+            return product(request, request.POST['product'])
 
 
 @login_required
@@ -107,7 +121,7 @@ def review(request):
 @login_required
 def confirmation(request):
     if request.method == "POST":
-        order_form = payment_info_form(data = request.POST)
+        order_form = PaymentInfoForm(data = request.POST)
         if order_form.is_valid():
             order_form.save()
             cart_items = list(Cart.objects.all().filter(user_id=request.user.id))
@@ -116,7 +130,7 @@ def confirmation(request):
             for item in cart_items:
                 data['product'] = int(item.product_id)
                 data['quantity'] = int(item.quantity)
-                current_form = place_order_form(data=data)
+                current_form = PlaceOrderForm(data=data)
                 if current_form.is_valid():
                     current_form.save()
                     item.delete()
