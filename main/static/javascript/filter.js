@@ -9,7 +9,10 @@ function getAjax() {
             let products = window["products"]
             filter_slider.max = Math.max.apply(Math, products.map(function(product) { return parseInt(product.price.replace(".","")); }))
             filter_slider.min = Math.min.apply(Math, products.map(function(product) { return parseInt(product.price.replace(".","")); }))
-            filter_slider.value = filter_slider.max
+            console.log(parseInt(filter_slider.max) + (500-(parseInt(filter_slider.max % 500))))
+            filter_slider.max = parseInt(filter_slider.max) + (500-(parseInt(filter_slider.max % 500)))
+            filter_slider.value =filter_slider.max
+            console.log(filter_slider.max)
             document.getElementById("slider_info").innerText =filter_slider.value
             display_products()
         }
