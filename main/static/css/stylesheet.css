@@ -355,6 +355,10 @@ body{
     background-color: #373f4f;
     border-radius: 5px;
     padding: 50px;
+    text-align: center;
+    margin: 20px 40px 100px 70px;
+    width: 600px;
+
 }
 
 /* General */
