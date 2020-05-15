@@ -3,11 +3,6 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            {# Temp lausn need to fix fyrir CVC, MM, YY -Arnar#}
-            <form>
-                <input type="text" placeholder="CVC" class="form-control">
-                <input type="number" placeholder="MM" class="form-control"><input type="number" placeholder="YY" class="form-control">
-            </form>
             <form action="/store/checkout/payment/" method="post">
                 {% csrf_token %}
                 {{ form }}

@@ -108,6 +108,12 @@ body{
      border: #e5a93d;
      color: #e5a93d;
  }
+.spinner-border {
+    height: 3rem;
+    width: 3rem;
+    margin-left: 40%;
+    margin-top: 10%;
+}
 
 .card-container {
     height: 500px;
@@ -318,7 +324,13 @@ body{
     width: 70%;
     margin-left: 10%;
 }
+/* Confirmation Page */
 
+#order_success {
+    background-color: #373f4f;
+    border-radius: 5px;
+    padding: 50px;
+}
 
 /* General */
 .helptext {
