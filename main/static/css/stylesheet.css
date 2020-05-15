@@ -335,13 +335,15 @@ body{
 
 .row{
     margin-top: 0%;
-    color: #c6cebd;
+
 }
 
 .col-md-4{
     margin-bottom: 3%;
 }
-
+#footer_text {
+    color: #c6cebd;
+}
 
 .page-footer {
     margin-top: 10px;

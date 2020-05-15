@@ -95,7 +95,6 @@ def cart(request):
     total = 0
     for i in range(len(cart_items)):
         total += int(cart_items[i]["price"])
-    print(list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(1)))[0].image)
     return render(request, "store/cart.html", context={"cart_items": cart_items, "total": total})
 
 
@@ -108,13 +107,17 @@ def payment(request):
         if form.is_valid():
             cart_items = [{
                 "product": Product.objects.get(id=x.product_id).name,
+                "price": int(Product.objects.get(id=x.product_id).price.replace(".", "")),
                 "user": x.user_id,
                 "quantity": x.quantity,
                 "image": list(ProductImage.objects.raw(
                     "SELECT id from store_productimage WHERE product_id =" + str(x.product_id) + " and main_image"))[
                     0].image
             } for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =" + str(request.user.id))]
-            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items})
+            total = 0
+            for i in range(len(cart_items)):
+                total += int(cart_items[i]["price"])
+            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items, "total": total})
     return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
 
 
