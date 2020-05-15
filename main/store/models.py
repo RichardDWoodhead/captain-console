@@ -36,11 +36,12 @@ class Order(models.Model):
     date = models.DateField(auto_now=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     cardholder_name = models.CharField(max_length=255)
-    full_name = models.CharField(max_length=255, blank=True)
+
     card_number = models.IntegerField()
     exp_mm = models.IntegerField()
     exp_yy = models.IntegerField()
     cvc = models.IntegerField()
+    full_name = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
     country = models.CharField(max_length=255, blank=True)
     city = models.CharField(max_length=255, blank=True)
