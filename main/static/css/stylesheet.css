@@ -98,24 +98,29 @@ body{
     border: 2px solid #373f4f;
 }
 
- .btn-primary {
-     background-color: #e5a93d;
-     border: none;
-     color: #373f4f;
- }
-
- .btn-primary:hover {
-     background-color: #373f4f;
-     border: #e5a93d;
-     color: #e5a93d;
- }
-.spinner-border {
-    height: 3rem;
-    width: 3rem;
-    margin-left: 40%;
-    margin-top: 10%;
+/*store*/
+.filter {
+    position: sticky;
+    position: -webkit-sticky;
+    top: 20%;
+    border: 2px solid #373f4f;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column wrap;
+    width: 220px;
+    height: 420px;
+    padding: 5px 30px 5px 30px;
+    margin-right: 20px;
 }
 
+.storeIndex {
+    display: flex;
+    position: relative;
+    justify-content: space-around;
+    align-items: flex-start;
+    overflow: visible;
+    margin: 5%;
+}
 .card-container {
     height: 500px;
     max-width: 350px;
@@ -183,7 +188,7 @@ body{
     margin-bottom: 270px;
     border: 2px solid #373f4f;
 }
-
+/*shopping cart*/
 .shopping_cart {
     width: 70%;
     height: auto;
@@ -209,29 +214,8 @@ body{
     max-width: 80px;
 }
 
-.filter {
-    position: sticky;
-    position: -webkit-sticky;
-    top: 20%;
-    border: 2px solid #373f4f;
-    border-radius: 10px;
-    display: flex;
-    flex-flow: column wrap;
-    width: 220px;
-    height: 420px;
-    padding: 5px 30px 5px 30px;
-    margin-right: 20px;
-}
-.storeIndex {
-    display: flex;
-    position: relative;
-    justify-content: space-around;
-    align-items: flex-start;
-    overflow: visible;
-    margin: 5%;
-}
 
-
+/*profile*/
 #profilePic {
     margin: 30px 30px 30px 30px;
     border-radius: 50%;
@@ -254,7 +238,7 @@ body{
     flex-basis: 100%;
     height: 0;
 }
-
+/*contact us*/
 .contactUsForm{
     height: 550px;
     max-width: 600px;
@@ -276,7 +260,7 @@ body{
     cursor: pointer;
 }
 
-/* Product page */
+/* Product info page */
 .container {
     width: 100%;
     margin: 20px;
@@ -326,7 +310,7 @@ body{
 }
 /* Confirmation Page */
 
-
+/*review*/
 #rev_cont {
     display: flex;
     justify-content: space-around;
@@ -351,6 +335,29 @@ body{
     text-align: left;
 }
 
+/*payment*/
+
+
+#form_box {
+    width: 1000px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.personalInfo {
+    align-items: left;
+}
+
+.paymentContainer {
+    align-items: right;
+    width: 30%;
+}
+
+#pay {
+    margin-left: 80px;
+}
+
+/*confirmation*/
 #order_success {
     background-color: #373f4f;
     border-radius: 5px;
@@ -370,6 +377,23 @@ body{
     font-size: small;
 }
 
+ .btn-primary {
+     background-color: #e5a93d;
+     border: none;
+     color: #373f4f;
+ }
+
+ .btn-primary:hover {
+     background-color: #373f4f;
+     border: #e5a93d;
+     color: #e5a93d;
+ }
+.spinner-border {
+    height: 3rem;
+    width: 3rem;
+    margin-left: 40%;
+    margin-top: 10%;
+}
 /***********************************
             Footer
 ************************************/
