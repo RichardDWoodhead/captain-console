@@ -17,7 +17,7 @@ class PopulateCart(ModelForm):
         widgets = {
             "user":widgets.HiddenInput(),
             'product': widgets.HiddenInput(),
-            'quantity': widgets.NumberInput(attrs={'class': 'form-control'})
+            'quantity': widgets.NumberInput(attrs={'class': 'form-control','min':1,'max': '99','type': 'number'})
         }
 
 

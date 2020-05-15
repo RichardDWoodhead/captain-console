@@ -7,9 +7,9 @@ class PlaceOrderForm(ModelForm):
         model = ProductOrder
         exclude = ['id']
         widgets = {
-            'quantity': widgets.NumberInput(),
-            'order_id': widgets.NumberInput(),
-            'product_id': widgets.NumberInput()
+            'quantity': widgets.NumberInput(attrs={'min': 1}),
+            'order_id': widgets.NumberInput(attrs={'min': 1}),
+            'product_id': widgets.NumberInput(attrs={'min': 1})
         }
 
 

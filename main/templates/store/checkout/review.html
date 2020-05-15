@@ -2,44 +2,46 @@
 {% load static %}
 {% block content %}
     <div class="container">
-        <div class="row">
-            <div class="container">
-                <div class="row" style="color: #373f4f">Full Name: {{ data.full_name }}</div>
-                <div class="row" style="color: #373f4f">Cardholder Name: {{ data.cardholder_name }}</div>
-                <div class="row" style="color: #373f4f">Credit Card: {{ data.card_number }}</div>
-                <div class="row" style="color: #373f4f">Address: {{ data.address }}</div>
-                <div class="row" style="color: #373f4f">Country: {{ data.country }}</div>
-                <div class="row" style="color: #373f4f">City: {{ data.city }}</div>
-                <div class="row" style="color: #373f4f">Zip-Code: {{ data.zip_code }}</div>
+
+        <div id="rev_cont" class="row">
+            <div id="payinfo" class="container">
+                <div class="row"><h5>Full Name: </h5><p> {{ data.full_name }}</p></div>
+                <div class="row"><h5>Cardholder Name: </h5><p>{{ data.cardholder_name }}</p></div>
+                <div class="row"><h5>Credit Card: </h5><p>{{ data.card_number }}</p></div>
+                <div class="row"><h5>CVC: </h5><p>{{ data.cvc }}</p></div>
+                <div class="row"><h5>Expiration date: </h5><p>{{ data.exp_mm }}/{{ data.exp_yy }}</p></div>
+                <div class="row"><h5>Address: </h5><p>{{ data.address }}</p></div>
+                <div class="row"><h5>Country: </h5><p>{{ data.country }}</p></div>
+                <div class="row"><h5>City: </h5><p>{{ data.city }}</p></div>
+                <div class="row"><h5>Zip-Code: </h5><p>{{ data.zip_code }}</p></div>
             </div>
-            <br>
+            <div id="cart_rev">
+                {% for item in cart_items %}
+                    <div class="cart_item">
+                        <img id="cart_image" src="{{ item.image }}" alt="">
+                        <h5 id="prod_name"> {{ item.product }} </h5>
+                        <p id="quantity">Price:  {% widthratio item.price 1 item.quantity %} <br>Quantity: {{ item.quantity }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div id="rev_bottom">
             <form action="{%url 'edit_payment' %}" method="post">
                 <div style="display: None">
                     {% csrf_token %}
                     {{ form }}
                 </div>
-                <button type="submit">Edit Payment</button>
+                <button class="btn btn-primary" type="submit">Edit Payment</button>
             </form>
-
+            <br>
             <form action="{% url 'confirmation' %}" method="post"/>
                 <div style="display: None">
                     {% csrf_token %}
                     {{ form }}
                 </div>
-                <button type="submit">Confirm</button>
+                <button class="btn btn-primary" type="submit">Confirm</button>
             </form>
-
-            <div>
-                {% for item in cart_items %}
-                    <div class="cart_item">
-                        <img id="cart_image" src="{{ item.image }}" alt="">
-                        <h5 id="prod_name"> {{ item.product }} </h5>
-                        <p id="quantity">price:  {% widthratio item.price 1 item.quantity %} quantity: {{ item.quantity }}</p>
-                    </div>
-                {% endfor %}
-            </div>
         </div>
-
     </div>
 
 {% endblock %}

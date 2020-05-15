@@ -75,6 +75,7 @@ a:hover {
 body{
     background-color: #c6cebd;
     font-family: 'Roboto', sans-serif;
+    color: #373f4f;
 }
 
 /* Sign In */
@@ -108,6 +109,12 @@ body{
      border: #e5a93d;
      color: #e5a93d;
  }
+.spinner-border {
+    height: 3rem;
+    width: 3rem;
+    margin-left: 40%;
+    margin-top: 10%;
+}
 
 .card-container {
     height: 500px;
@@ -305,7 +312,6 @@ body{
 #to_cart {
     margin: 5%;
     padding: 3%;
-
 }
 
 #id_quantity {
@@ -318,7 +324,42 @@ body{
     width: 70%;
     margin-left: 10%;
 }
+/* Confirmation Page */
 
+
+#rev_cont {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    margin: 40px 0 20px 20px ;
+    border: 2px solid #373f4f;
+}
+
+#cart_rev {
+    width: 500px;
+
+}
+
+#rev_bottom {
+    margin-left: 20px;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+#payinfo {
+    width: auto;
+    text-align: left;
+}
+
+#order_success {
+    background-color: #373f4f;
+    border-radius: 5px;
+    padding: 50px;
+    text-align: center;
+    margin: 20px 40px 100px 70px;
+    width: 600px;
+
+}
 
 /* General */
 .helptext {
@@ -335,7 +376,6 @@ body{
 
 .row{
     margin-top: 0%;
-
 }
 
 .col-md-4{
@@ -346,10 +386,11 @@ body{
 }
 
 .page-footer {
-    margin-top: 10px;
+    padding: 20px 40px 40px 40px;
     background-color: #373f4f;
     width: 100%;
     box-shadow: 0px 0px 5px 0px #888888;
+    justify-content: center;
     text-align: center;
 }
 

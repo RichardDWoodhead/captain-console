@@ -257,11 +257,14 @@ class PaymentInfoForm(ModelForm):
         exclude = ['id', 'date']
         widgets = {
             'user': widgets.HiddenInput(),
-            'cardholder_name': widgets.TextInput(attrs={'class': 'form-control' , 'placeholder': 'Name of Cardholder' }),
-            'card_number': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Credit-card Number'}),
+            'cardholder_name': widgets.TextInput(attrs={'class': 'form-control' , 'placeholder': 'Name of Cardholder', 'autofocus': True }),
+            'card_number': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'Credit-card Number', 'min': 1}),
+            'cvc': widgets.NumberInput(attrs={'class': 'form-control','type':'number', 'placeholder': 'CVC', 'min': 1}),
+            'exp_mm': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'MM', 'label': 'Expiration Date', 'min': 1}),
+            'exp_yy': widgets.NumberInput(attrs={'class': 'form-control', 'placeholder': 'YY', 'min': 1}),
             'address': widgets.TextInput(attrs={'class': 'form-control' , 'placeholder': 'Address'}),
             'country': widgets.Select(attrs={'class': 'form-control'}, choices=COUNTRIES),
             'city': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'City'}),
-            'zip_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Zip-code'}),
+            'zip_code': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Zip-code', 'min': 1}),
             'full_name': widgets.TextInput(attrs={'class': 'form-control', 'placeholder': 'Full name'}),
         }
