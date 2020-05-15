@@ -116,7 +116,7 @@ def cart(request):
     }for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id ="+str(request.user.id))]
     total = 0
     for i in range(len(cart_items)):
-        total += int(cart_items[i]["price"])
+        total += (int(cart_items[i]["price"]) * int(cart_items[i]["quantity"]))
     return render(request, "store/cart.html", context={"cart_items": cart_items, "total": total})
 
 
@@ -138,7 +138,7 @@ def payment(request):
             } for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =" + str(request.user.id))]
             total = 0
             for i in range(len(cart_items)):
-                total += int(cart_items[i]["price"])
+                total += (int(cart_items[i]["price"]) * int(cart_items[i]["quantity"]))
             return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items, "total": total})
     return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
 
