@@ -33,9 +33,10 @@
 }
 
 .nav_link {
-    padding: 3px 4px 10px 3px;
+    padding: 3px 4px 10px 40px;
     height: 10px;
     width: 4rem;
+    font-size: 18px;
 
 }
 
@@ -126,7 +127,6 @@ body{
     display: flex;
     flex-flow: column wrap;
     width: 220px;
-    height: 420px;
     padding: 5px 30px 5px 30px;
     margin-right: 20px;
     background-color: #373f4f;
@@ -148,6 +148,11 @@ body{
     margin-top: 50px;
     margin-bottom: 270px;
     border: 2px solid #373f4f;
+}
+
+.descending{
+    margin-top: 15px;
+    display: inline-block;
 }
 
 .card {
@@ -252,8 +257,17 @@ body{
     height: 200px;
     width: auto;
     justify-content: space-between;
+    margin-bottom: 20px;
 }
 
+#update_profile_button{
+    margin-top: 10px;
+    margin-bottom: 30px;
+}
+
+#profile{
+    margin: 5% 0 20% 8%;
+}
 
 .break {
     flex-basis: 100%;

@@ -86,6 +86,7 @@ function display_products(){
     let filter_slider = document.getElementById("slider")
     let type_checked = is_checked("check-box-type")
     let manufacturer_checked = is_checked("check-box-manufacturer")
+    if(document.getElementById("desc").checked) products.reverse();
     for (let i = 0; i < products.length; i++) {
         let is_type = false
         let is_manufacturer = false
