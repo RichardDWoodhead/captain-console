@@ -8,16 +8,20 @@
          </a>
     </div>
         <div class="profileContainer">
-            <img alt="Profile Picture" class="col-2" id="profilePic" src="{{ user.profile_pic }}">
+            <img alt="Profile Picture" class="col-2" id="profilePic" src="{{ profile.profile_pic }}">
             <div class="profileText">
                 <H1>Profile Info</H1>
-                <p>Name: {{ user.first_name }} {{ user.last_name }}</p>
-                <p>Phone number: {{ user.phone_number }}</p>
-                <p>Email: {{ user.email }}</p>
+                <p>Name: {{ profile.first_name }} {{ profile.last_name }}</p>
+                <p>Phone number: {{ profile.phone_number }}</p>
+                <p>Email: {{ profile.email }}</p>
             </div>
         </div>
+      <div>
+        <a href="{% url 'history' %}">
+            <button class="btn btn-primary">Recently viewed items</button>
+        </a>
     </div>
-    <script type="text/javascript" src="{% static "javascript/profile.js" %}"></script>
+    </div>
+
 {% endblock %}
 
-{#https://pyxis.nymag.com/v1/imgs/d95/e05/ebe005867dedfb1c774db5bfac2e4f13cf-17-paul-blart-mall-cop-2.rsquare.w700.jpg#}

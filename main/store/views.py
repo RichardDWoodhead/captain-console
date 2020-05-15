@@ -43,7 +43,6 @@ def product(request, product_id):
                 profile.user = request.user
                 profile = profile.save()
         profile = user.models.User.objects.filter(user=request.user).first()
-        print(profile.search_history)
         if profile.search_history == None:
             history = [product_id]
         else:
