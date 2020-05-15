@@ -61,6 +61,9 @@ def history(request):
     product_history = profile.search_history
     items_ids = [d['product_id'] for d in items]
     products = []
-    for i in product_history:
-        products.append(items[items_ids.index(i)])
-    return render(request, 'user/history.html', context={'products': products})
+    if product_history != None:
+        for i in product_history:
+            products.append(items[items_ids.index(i)])
+        return render(request, 'user/history.html', context={'products': products})
+    else:
+        return redirect('store_index')
