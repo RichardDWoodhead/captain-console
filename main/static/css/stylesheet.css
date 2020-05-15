@@ -13,7 +13,7 @@
     height: 120px;
     background-color: #373f4f;
     text-align: left;
-    box-shadow: 0px 5px 5px 0px #aaaaaa;
+    box-shadow: 0px 4px 4px 1px #495057a1;
     display: flex;
     flex-wrap: nowrap;
 }
@@ -52,6 +52,8 @@ a:hover {
 #search{
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 50px;
+    border-radius: 15px;
+    padding-left: 10px;
 }
 
 
@@ -67,6 +69,12 @@ a:hover {
 .nav_icon {
     padding-left: 20px;
     color: #8eabb7;
+}
+.logInOut {
+    padding-top: 3px;
+    width: 3rem;
+    font-size: 0.8rem;
+
 }
 
 /***********************************
@@ -134,6 +142,7 @@ body{
     height: 420px;
     text-align: center;
     padding: 0;
+    box-shadow: 3px 5px 4px 1px #495057a1;
 }
 
 .card-top {
@@ -368,6 +377,10 @@ body{
 
 .errorlist {
     font-size: small;
+}
+.form-control{
+    border: #888888 solid 1px;
+    margin: 3px;
 }
 
 /***********************************
