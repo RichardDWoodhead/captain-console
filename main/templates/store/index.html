@@ -4,14 +4,14 @@
     <div class="storeIndex">
         <div class="filter">
             <div class="radio">
-                - Type - <br>
+                <b>- Type -</b> <br>
                 <label><input class="checkbox check-box-type" type="checkbox" name="Game" > Game</label>
             </div>
             <div class="radio">
                 <label><input class="checkbox check-box-type" type="checkbox" name="Console"> Console</label>
             </div>
             <div id="manufacturers">
-                - Manufacturers -
+                <b>- Manufacturers -</b>
                 {% for manufacturer in manufacturers %}
                     <label><input class="checkbox check-box-manufacturer" type="checkbox" name="{{ manufacturer.name }}"> {{ manufacturer.name }}</label>
                 {% endfor %}
