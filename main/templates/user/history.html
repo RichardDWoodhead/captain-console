@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<div class="shopping_cart">
+{% for i in products %}
+    <a href="{% url 'product' product_id=i.product_id %}">
+        <div class="cart_item">
+            <img id="cart_image" src="{{ i.product_image }}" alt="">
+            <h5 id="prod_name">{{ i.product_name }} </h5>
+        </div>
+    </a>
+{% endfor %}
+</div>
+{% endblock %}
+

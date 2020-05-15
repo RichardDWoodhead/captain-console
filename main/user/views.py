@@ -1,6 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
+
+from store.models import Product, ProductImage
 from user.form.profile_form import ImageForm
 from user.form.profile_form import ProfileForm
 from user.models import Profile
@@ -26,11 +28,10 @@ def register(request):
 @login_required
 def profile(request):
     profile = User.objects.filter(user=request.user).first()
-    print(profile)
     if profile == None:
         return redirect('edit_profile')
     return render(request, 'user/profile.html', {
-        'user': profile
+        'profile': profile
     })
 
 
@@ -48,3 +49,18 @@ def edit_profile(request):
     return render(request, 'user/edit_profile.html', {
         'form': ProfileForm(instance=profile)
     })
+
+
+def history(request):
+    items = [{
+        'product_id': str(i.id),
+        'product_name': i.name,
+        'product_image': str(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id = "+str(i.id)+" AND main_image")[0].image),
+    } for i in list(Product.objects.all())]
+    profile = User.objects.filter(user=request.user).first()
+    product_history = profile.search_history
+    items_ids = [d['product_id'] for d in items]
+    products = []
+    for i in product_history:
+        products.append(items[items_ids.index(i)])
+    return render(request, 'user/history.html', context={'products': products})
