@@ -9,7 +9,7 @@
         <form method="post" action="{% url 'edit_profile' %}">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" class="btn btn-primary" value="Update">
+            <input type="submit" id="update_profile_button" class="btn btn-primary" value="Update">
         </form>
     </div>
     </div>
