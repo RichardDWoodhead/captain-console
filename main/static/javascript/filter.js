@@ -113,11 +113,11 @@ function display_products(){
             card_title.innerHTML = products[i].name
             let card_price = document.createElement("p")
             card_price.classList = "card-text"
-            card_price.innerHTML = "price: " + products[i].price
+            card_price.innerHTML = "Price: " + products[i].price
             let card_link = document.createElement("a")
             card_link.classList = "btn btn-primary"
             card_link.href = "/store/product/" + products[i].id
-            card_link.innerHTML = "more details"
+            card_link.innerHTML = "Details"
             card_img_div.appendChild(card_img)
             card.appendChild(card_img_div)
             card_body.appendChild(card_title)
