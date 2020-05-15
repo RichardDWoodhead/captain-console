@@ -6,9 +6,9 @@
             <img id="logo_pic" src="{% static "images/CClogo.png" %}">
         </div>
         <div id="nav_links">
-            <a class="nav_link" href="/"><h5 style="font-size: 1rem">Home</h5></a>
-            <a class="nav_link" href="/store"><h5 style="font-size: 1rem">Store</h5></a>
-            <a class="nav_link" href="/contact_us"><h5 style="font-size: 1rem">Contact Us</h5></a>
+            <h5 style="font-size: 1rem"><a class="nav_link" href="/">Home</a></h5>
+            <h5 style="font-size: 1rem"><a class="nav_link" href="/store">Store</a></h5>
+            <h5 style="font-size: 1rem"><a class="nav_link" href="/contact_us">Contact Us</a></h5>
         </div>
         <div id="search_div">
             <form id="search_form" action="/store">
@@ -18,9 +18,9 @@
         </div>
         <div id="nav_icons" >
             {% if user.is_authenticated %}
-                <a id="logout" class="nav_link" href="{% url "logout" %}"><h5 class="logInOut">Log out</h5></a>
+                <h5 class="logInOut"><a class="nav_link" href="{% url "logout" %}">Log out</a></h5>
             {% else %}
-                <a id="login" class="nav_link" href="/user"><h5 class="logInOut">Log in</h5></a>
+                <h5><a class="logInOut nav_link"  href="/user">Log in</a></h5>
             {% endif %}
             <a class="nav_icon" href="/user/profile"><i class="fas fa-user"></i></a>
             <a class="nav_icon" href="/store/cart"><i class="fas fa-shopping-cart"></i></a>
