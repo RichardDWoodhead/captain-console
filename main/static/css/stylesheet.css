@@ -151,11 +151,6 @@ body{
     bottom: 15px;
 }
 
-.product_img {
-    display: inline;
-    height: 300px;
-}
-
 /* Register */
 .centered-form{
 	margin-top: 60px;
@@ -205,20 +200,6 @@ body{
 #cart_image {
     max-height: 80px;
     max-width: 80px;
-}
-
-.helptext {
-    font-size: small;
-}
-
-.errorlist {
-    font-size: small;
-}
-
-/* Other */
-
-.carousel_container{
-    width: 30%;
 }
 
 .filter {
@@ -286,6 +267,66 @@ body{
     font-weight: 600;
     color: #fff;
     cursor: pointer;
+}
+
+/* Product page */
+.container {
+    width: 100%;
+    margin: 20px;
+}
+#det_upper {
+    width: 100%;
+    display: flex;
+    height: 500px;
+}
+
+#main_img {
+    width: 40%;
+    margin: 40px;
+}
+
+.product_img {
+    min-width: 150px;
+    min-height: 200px;
+    max-height: 400px;
+}
+#det_right{
+    margin: 40px 40px 0 0;
+}
+
+#description {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-top: 3%;
+    height: 50%;
+}
+
+#to_cart {
+    margin: 5%;
+    padding: 3%;
+
+}
+
+#id_quantity {
+    width: 100px;
+}
+#carousel_container {
+    margin-bottom: 150px;
+}
+.carousel {
+    width: 70%;
+    margin-left: 10%;
+}
+
+
+/* General */
+.helptext {
+    font-size: small;
+}
+
+.errorlist {
+    font-size: small;
 }
 
 /***********************************
