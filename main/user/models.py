@@ -13,7 +13,7 @@ class User(models.Model):
     last_name = models.CharField(max_length=255, blank=True)
     email = models.CharField(max_length=255, blank=True)
     phone_number = models.IntegerField(blank=True)
-    profile_pic = models.CharField(max_length=255, blank=True)
+    profile_pic = models.CharField(max_length=255, blank=True, default="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.marismith.com%2Fwp-content%2Fuploads%2F2014%2F07%2Ffacebook-profile-blank-face.jpeg&f=1&nofb=1")
     search_history = ArrayField(models.CharField(max_length=140, default=list, blank=True))
 
 
