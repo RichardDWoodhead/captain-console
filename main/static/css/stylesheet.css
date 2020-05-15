@@ -409,6 +409,10 @@ body{
     justify-content: center;
 }
 
+#done_btn {
+    justify-content: center;
+}
+
 /* General */
 .helptext {
     font-size: small;
@@ -429,6 +433,11 @@ body{
      border: #e5a93d;
      color: #e5a93d;
  }
+
+ .btn-primary:focus {
+     color: #3c7a9d;
+ }
+
 .spinner-border {
     height: 3rem;
     width: 3rem;
