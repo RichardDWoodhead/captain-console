@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django import forms
 from store.Forms.add_to_basket import PopulateCart
@@ -47,9 +48,9 @@ def product(request, product_id):
 
 @login_required
 def add_to_cart(request):
-    data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
-
     if request.method == 'POST':
+
+        data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
         form = PopulateCart(data=data or None)
         if form.is_valid():
             form.save()
@@ -63,8 +64,10 @@ def add_to_cart(request):
         #     'quantity': order_item.quantity
         # }]
         # return render(request, "store/product_details.html", context={"product": cproduct[0]})
+        else:
+            form = PopulateCart()
     else:
-        form = PopulateCart()
+        return redirect("store_index")
 
 
 @login_required

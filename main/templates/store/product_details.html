@@ -11,7 +11,7 @@
             <form id="to_cart" action="/store/add_to_cart" method="post">
                 {% csrf_token %}
                 {{ form }}
-                <button class="btn btn-lg btn-primary" type="submit">Add to basket</button>
+                <button class="btn btn-lg btn-primary" onclick="alert('Item added to cart')" type="submit">Add to basket</button>
             </form>
         </div>
     </div>
