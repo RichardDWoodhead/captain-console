@@ -36,7 +36,7 @@
                     <div class="cart_item">
                         <img id="cart_image" src="{{ item.image }}" alt="">
                         <h5 id="prod_name"> {{ item.product }} </h5>
-                        <p id="quantity"> {{ item.quantity }}</p>
+                        <p id="quantity">price:  {% widthratio item.price 1 item.quantity %} quantity: {{ item.quantity }}</p>
                     </div>
                 {% endfor %}
             </div>

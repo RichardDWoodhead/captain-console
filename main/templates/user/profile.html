@@ -3,12 +3,11 @@
 {% block content %}
     <div class="container">
      <div>
-
          <button class="btn btn-primary" type="button" onclick="{% url "profile" %}">Edit Profile</button>
     </div>
-        <div class="row profileContainer">
+        <div class="profileContainer">
             <img alt="Profile Picture" class="col-2" id="profilePic" src="{% static "images/Profilepic.png"%}">
-            <div class="profileText col-4">
+            <div class="profileText">
                 <H1>Profile Info</H1>
                 <form>
                 <p>Lorem ipsum dolor sit amet.</p>

@@ -10,14 +10,15 @@
         <div class="cart_item">
             <img id="cart_image" src="{{ item.image }}" alt="">
             <h5 id="prod_name">{{ item.product }} </h5>
-            <p id="quantity">price:  {% widthratio item.price 1 item.quantity %} quantity: {{ item.quantity }}</p>
+            <p id="quantity">Price:  {% widthratio item.price 1 item.quantity %} <br> Quantity: {{ item.quantity }}</p>
         </div>
     {% endfor %}
-        <h5>total: {{ total }}</h5>
+        <h5>Total amount: {{ total }}</h5>
     <a href="checkout/payment" class="btn btn-primary">Pay Now!</a>
         <form method="post" action="{% url "clear_cart" %}">
             {% csrf_token %}
-            <button class="btn btn-primary" type="submit"> clear cart</button>
+            <br>
+            <button class="btn btn-primary" type="submit"> Clear Cart</button>
         </form>
     {% endif %}
     </div>

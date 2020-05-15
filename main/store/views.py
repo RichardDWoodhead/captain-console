@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django import forms
 from store.Forms.add_to_basket import PopulateCart
@@ -47,9 +48,9 @@ def product(request, product_id):
 
 @login_required
 def add_to_cart(request):
-    data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
-
     if request.method == 'POST':
+
+        data = {"quantity": request.POST["quantity"], "user": request.user, "product":request.POST["product"]}
         form = PopulateCart(data=data or None)
         if form.is_valid():
             form.save()
@@ -63,8 +64,10 @@ def add_to_cart(request):
         #     'quantity': order_item.quantity
         # }]
         # return render(request, "store/product_details.html", context={"product": cproduct[0]})
+        else:
+            form = PopulateCart()
     else:
-        form = PopulateCart()
+        return redirect("store_index")
 
 
 @login_required
@@ -92,7 +95,6 @@ def cart(request):
     total = 0
     for i in range(len(cart_items)):
         total += int(cart_items[i]["price"])
-    print(list(ProductImage.objects.raw("SELECT id from store_productimage WHERE product_id ="+str(1)))[0].image)
     return render(request, "store/cart.html", context={"cart_items": cart_items, "total": total})
 
 
@@ -105,13 +107,17 @@ def payment(request):
         if form.is_valid():
             cart_items = [{
                 "product": Product.objects.get(id=x.product_id).name,
+                "price": int(Product.objects.get(id=x.product_id).price.replace(".", "")),
                 "user": x.user_id,
                 "quantity": x.quantity,
                 "image": list(ProductImage.objects.raw(
                     "SELECT id from store_productimage WHERE product_id =" + str(x.product_id) + " and main_image"))[
                     0].image
             } for x in Cart.objects.raw("SELECT id from store_cart WHERE user_id =" + str(request.user.id))]
-            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items})
+            total = 0
+            for i in range(len(cart_items)):
+                total += int(cart_items[i]["price"])
+            return render(request, "store/checkout/review.html", context={'form': form, 'data': data, 'cart_items': cart_items, "total": total})
     return render(request, "store/checkout/payment.html", context={'form': PaymentInfoForm})
 
 
