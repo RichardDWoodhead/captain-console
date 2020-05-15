@@ -18,9 +18,9 @@
         </div>
         <div id="nav_icons" >
             {% if user.is_authenticated %}
-                <h5 class="logInOut"><a class="nav_link" href="{% url "logout" %}">Log out</a></h5>
+                <h5><a class="logInOut nav_link" href="{% url "logout" %}">Log out</a></h5>
             {% else %}
-                <h5><a class="logInOut nav_link"  href="/user">Log in</a></h5>
+                <h5><a class="logInOut nav_link" href="/user">Log in</a></h5>
             {% endif %}
             <a class="nav_icon" href="/user/profile"><i class="fas fa-user"></i></a>
             <a class="nav_icon" href="/store/cart"><i class="fas fa-shopping-cart"></i></a>
