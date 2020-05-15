@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-    <!-- <link rel="stylesheet" href="{% static 'css/stylesheet.css' %}"> -->
+
     <div class="profileContainer">
     <h1 class="col-md-4">Profile</h1>
     <div class="profileText">
@@ -9,7 +9,7 @@
 
         <form method="post" action="{% url 'edit_profile' %}">
             {% csrf_token %}
-            {{ form.data }}
+            {{ form }}
             <input type="submit" class="btn btn-primary" value="Update">
         </form>
     </div>

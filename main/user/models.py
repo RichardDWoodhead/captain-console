@@ -1,8 +1,20 @@
-from django.contrib.auth.models import User
+from django.contrib.postgres.fields import ArrayField
 from django.db import models
+from django.db.models import ForeignKey
+import django.contrib.auth.models
 from store.models import Product
 
 # Create your models here.
+
+
+class User(models.Model):
+    user = models.ForeignKey(django.contrib.auth.models.User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=255, blank=True)
+    last_name = models.CharField(max_length=255, blank=True)
+    email = models.CharField(max_length=255, blank=True)
+    phone_number = models.IntegerField(blank=True)
+    profile_pic = models.CharField(max_length=255, blank=True)
+    search_history = ArrayField(models.CharField(max_length=140, default=list, blank=True))
 
 
 class ProfilePicture(models.Model):

@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AnonymousUser
 from django.shortcuts import render, redirect
 from django import forms
 from store.Forms.add_to_basket import PopulateCart
@@ -7,9 +7,13 @@ from store.Forms.payment_info_form import PaymentInfoForm
 from store.Forms.place_order_form import PlaceOrderForm
 from store.models import Product, ProductImage, Manufacturer, Cart, Order
 from django.http import HttpResponse, JsonResponse
+import user.models
 
 
 # Create your views here.
+from user.form.profile_form import SearchHistoryForm, ProfileForm
+
+
 def index(request):
     manufacturers = list(Manufacturer.objects.raw("SELECT distinct id FROM store_manufacturer"))
     return render(request, "store/index.html", context={"manufacturers": manufacturers})
@@ -30,6 +34,25 @@ def get_products(request):
 
 
 def product(request, product_id):
+    if not isinstance(request.user, AnonymousUser):
+        profile = user.models.User.objects.filter(user=request.user).first()
+        if profile == None:
+            form = ProfileForm(instance=profile, data=request.POST)
+            if form.is_valid():
+                profile = form.save(commit=False)
+                profile.user = request.user
+                profile = profile.save()
+        profile = user.models.User.objects.filter(user=request.user).first()
+        print(profile.search_history)
+        if profile.search_history == None:
+            history = [product_id]
+        else:
+            history = list(profile.search_history)
+            history.append(str(product_id))
+            history = list(set(history))
+        form = SearchHistoryForm(instance=profile, data={'search_history': history})
+        if form.is_valid():
+            form.save()
     cproduct = [{
         'id': int(x.id),
         'name': x.name,

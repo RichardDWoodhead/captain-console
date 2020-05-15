@@ -4,6 +4,8 @@ from django.shortcuts import render, redirect
 from user.form.profile_form import ImageForm
 from user.form.profile_form import ProfileForm
 from user.models import Profile
+from user.models import User
+import django.contrib.auth.models
 
 
 def user(request):
@@ -23,7 +25,19 @@ def register(request):
 
 @login_required
 def profile(request):
-    profile = Profile.objects.filter(user=request.user).first()
+    profile = User.objects.filter(user=request.user).first()
+    print(profile)
+    if profile == None:
+        return redirect('edit_profile')
+    return render(request, 'user/profile.html', {
+        'user': profile
+    })
+
+
+
+@login_required
+def edit_profile(request):
+    profile = User.objects.filter(user=request.user).first()
     if request.method == 'POST':
         form = ProfileForm(instance=profile, data=request.POST)
         if form.is_valid():
@@ -31,24 +45,6 @@ def profile(request):
             profile.user = request.user
             profile.save()
             return redirect('profile')
-    user = dict(Profile.objects.raw('select id from user_profile where user_id = ' + str(request.user.id)))
-    return render(request, 'user/profile.html', {
-        'form': ProfileForm(instance=profile),
-        'user': user
+    return render(request, 'user/edit_profile.html', {
+        'form': ProfileForm(instance=profile)
     })
-
-
-@login_required
-def edit_profile_pic(request):
-    profile = user.objects.filter(user=request.user).first()
-    if request.method == 'POST':
-        form = ImageForm(instance=profile, data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect("profile")
-    else:
-        return render(request, 'user/edit_profile_pic.html', {
-            'form': ImageForm(instance=profile)
-        })
-
-
