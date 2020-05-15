@@ -312,7 +312,6 @@ body{
 #to_cart {
     margin: 5%;
     padding: 3%;
-
 }
 
 #id_quantity {
@@ -327,7 +326,7 @@ body{
 }
 /* Confirmation Page */
 
-<<<<<<< HEAD
+
 #rev_cont {
     display: flex;
     justify-content: space-around;
@@ -350,12 +349,12 @@ body{
 #payinfo {
     width: auto;
     text-align: left;
-=======
+}
+
 #order_success {
     background-color: #373f4f;
     border-radius: 5px;
     padding: 50px;
->>>>>>> 184a18c9047d256b35e972341b7baa267d9eeb31
 }
 
 /* General */

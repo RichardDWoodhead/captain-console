@@ -2,29 +2,18 @@
 {% load static %}
 {% block content %}
     <div class="container">
-<<<<<<< HEAD
+
         <div id="rev_cont" class="row">
             <div id="payinfo" class="container">
                 <div class="row"><h5>Full Name: </h5><p> {{ data.full_name }}</p></div>
                 <div class="row"><h5>Cardholder Name: </h5><p>{{ data.cardholder_name }}</p></div>
                 <div class="row"><h5>Credit Card: </h5><p>{{ data.card_number }}</p></div>
+                <div class="row"><h5>CVC: </h5><p>{{ data.cvc }}</p></div>
+                <div class="row"><h5>Expiration date: </h5><p>{{ data.exp_mm }}/{{ data.exp_yy }}</p></div>
                 <div class="row"><h5>Address: </h5><p>{{ data.address }}</p></div>
                 <div class="row"><h5>Country: </h5><p>{{ data.country }}</p></div>
                 <div class="row"><h5>City: </h5><p>{{ data.city }}</p></div>
                 <div class="row"><h5>Zip-Code: </h5><p>{{ data.zip_code }}</p></div>
-=======
-        <div class="row">
-            <div class="container">
-                <div class="row" style="color: #373f4f">Full Name: {{ data.full_name }}</div>
-                <div class="row" style="color: #373f4f">Cardholder Name: {{ data.cardholder_name }}</div>
-                <div class="row" style="color: #373f4f">CVC: {{ data.cvc }}</div>
-                <div class="row" style="color: #373f4f">Expiration date: {{ data.exp_mm }}/{{ data.exp_yy }}</div>
-                <div class="row" style="color: #373f4f">Credit Card: {{ data.card_number }}</div>
-                <div class="row" style="color: #373f4f">Address: {{ data.address }}</div>
-                <div class="row" style="color: #373f4f">Country: {{ data.country }}</div>
-                <div class="row" style="color: #373f4f">City: {{ data.city }}</div>
-                <div class="row" style="color: #373f4f">Zip-Code: {{ data.zip_code }}</div>
->>>>>>> 184a18c9047d256b35e972341b7baa267d9eeb31
             </div>
             <div id="cart_rev">
                 {% for item in cart_items %}
