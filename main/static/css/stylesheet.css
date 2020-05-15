@@ -33,7 +33,10 @@
 }
 
 .nav_link {
-    padding-left: 20px;
+    padding: 3px 4px 10px 3px;
+    height: 10px;
+    width: 4rem;
+
 }
 
 h5 {
@@ -48,10 +51,14 @@ h5 {
 a:hover {
     color: #e5a93d;
 }
+a {
+    color: #8eabb7;
+}
 
 #search{
     box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-top: 50px;
+    margin-right: 10px;
     border-radius: 15px;
     padding-left: 10px;
 }
@@ -71,8 +78,6 @@ a:hover {
     color: #8eabb7;
 }
 .logInOut {
-    padding-top: 3px;
-    width: 3rem;
     font-size: 0.8rem;
 
 }
