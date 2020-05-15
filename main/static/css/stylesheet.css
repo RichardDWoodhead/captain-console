@@ -75,6 +75,7 @@ a:hover {
 body{
     background-color: #c6cebd;
     font-family: 'Roboto', sans-serif;
+    color: #373f4f;
 }
 
 /* Sign In */
@@ -319,6 +320,29 @@ body{
     margin-left: 10%;
 }
 
+#rev_cont {
+    display: flex;
+    justify-content: space-around;
+    padding: 40px;
+    margin: 40px 0 20px 20px ;
+    border: 2px solid #373f4f;
+}
+
+#cart_rev {
+    width: 500px;
+
+}
+
+#rev_bottom {
+    margin-left: 20px;
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+#payinfo {
+    width: auto;
+    text-align: left;
+}
 
 /* General */
 .helptext {
