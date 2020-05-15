@@ -2,11 +2,10 @@
 {% load static %}
 {% block content %}
 
-    <div class="profileContainer">
+    <div class="container">
     <h1 class="col-md-4">Profile</h1>
     <div class="profileText">
         <p>Edit your profile information</p>
-
         <form method="post" action="{% url 'edit_profile' %}">
             {% csrf_token %}
             {{ form }}
@@ -14,4 +13,5 @@
         </form>
     </div>
     </div>
+
 {% endblock %}
